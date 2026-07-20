@@ -1,0 +1,333 @@
+'use client'
+
+import Link from 'next/link'
+import { Playfair_Display } from 'next/font/google'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import {
+  Activity,
+  ArrowRight,
+  Award,
+  CalendarDays,
+  ChevronRight,
+  Clock,
+  Droplets,
+  HeartHandshake,
+  Phone,
+  Scissors,
+  ShieldCheck,
+  Sparkles,
+  Stethoscope,
+  Syringe,
+  Target,
+  Waves,
+} from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
+import Header from '@/app/components/Header'
+import Footer from '@/app/components/Footer'
+
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
+
+const PHONE_1 = '+91 94172 37526'
+const WHATSAPP = '919417237526'
+
+function ImageCard({ src, alt, className = '' }) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed) {
+    return <div className={`bg-gradient-to-br from-[#F8FBFF] to-[#FCE8F2] ${className}`} aria-label={alt} />
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onError={() => setFailed(true)}
+      draggable={false}
+      loading="lazy"
+    />
+  )
+}
+
+const treatmentData = {
+  title: 'Laser Treatments',
+  icon: Scissors,
+  subtitle: 'Advanced Laser Care for Skin & Hair',
+  description:
+    'Laser treatment plans are selected around your skin, hair and the concern you want to address.',
+  image: '/images/treatments/laser-treatments.jpg',
+  credentials: [
+    { label: 'MBBS, MD — Gold Medalist', icon: Award },
+    { label: '10+ Years in Dermatology', icon: Stethoscope },
+    { label: 'Personalised Laser Plans', icon: ShieldCheck },
+  ],
+}
+
+const laserTreatments = [
+  { 
+    title: 'Laser Hair Removal', 
+    icon: Activity,
+    href: '/treatments/laser-treatments/laser-hair-removal',
+    image: '/images/treatments/laser-treatments/Laser-Hair-Removal.jpg',
+    summary: 'A popular cosmetic procedure that uses concentrated beams of light to remove unwanted hair from various parts of the body. The laser energy is absorbed by pigment in the hair follicles, damaging them and inhibiting future hair growth.',
+    accent: 'from-[#FFF5F8] to-[#FCE8F2]' 
+  },
+  { 
+    title: 'Laser Resurfacing', 
+    icon: Sparkles,
+    href: '/treatments/laser-treatments/laser-resurfacing',
+    image: '/images/treatments/laser-treatments/LaserResurfacing.jpg',
+    summary: 'A cutting-edge procedure for wrinkles, scars and uneven texture. High-intensity laser beams precisely remove damaged skin layers, stimulate collagen and reveal smoother, rejuvenated skin.',
+    accent: 'from-[#F0F7FF] to-[#E4F1FF]' 
+  },
+]
+
+const concerns = [
+  'Unwanted Hair',
+  'Wrinkles',
+  'Acne Scars',
+  'Uneven Texture',
+  'Sun Damage',
+  'Fine Lines',
+  'Skin Rejuvenation',
+  'Long-Term Hair Reduction',
+]
+
+const whyChoose = [
+  {
+    title: 'Expert Diagnosis',
+    desc: 'Dr. Varun Jain assesses your skin concern before recommending treatment.',
+    icon: Stethoscope,
+  },
+  {
+    title: 'Advanced Options',
+    desc: 'Medical dermatology, infection management and precise skin procedures in one clinic.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Safe, Proven Care',
+    desc: 'Every plan is medically supervised and tailored to your skin and medical history.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Long-Term Support',
+    desc: 'Clear guidance helps you support your skin health beyond the consultation.',
+    icon: HeartHandshake,
+  },
+]
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+}
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+}
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+}
+
+export default function LaserTreatmentsPage() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const Icon = treatmentData.icon
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
+    const handleChange = (event) => setPrefersReducedMotion(event.matches)
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  const callNow = () => {
+    window.location.href = `tel:${PHONE_1.replaceAll(' ', '')}`
+  }
+
+  const whatsappNow = () => {
+    window.open(`https://wa.me/${WHATSAPP}`, '_blank')
+  }
+
+  return (
+    <main className={`${playfairDisplay.className} min-h-screen bg-white text-[#1A1A2E]`}>
+      <Header />
+
+      <section className="relative overflow-hidden bg-white pb-0 pt-10 lg:pt-14">
+        <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-[#FFF5F8] opacity-60" />
+        <div className="absolute -bottom-60 -left-60 h-[600px] w-[600px] rounded-full bg-[#F0F7FF] opacity-40" />
+
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+          <nav className="mb-6 flex items-center gap-1.5 text-xs font-medium text-[#5A5A72]">
+            <Link href="/treatments" className="transition hover:text-[#D4146A]">Treatments</Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="text-[#1A1A2E]">Laser Treatments</span>
+          </nav>
+
+          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="flex flex-col justify-center"
+            >
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-[#FFF5F8] px-4 py-1.5 text-xs font-medium text-[#D4146A]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4146A] opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4146A]" />
+                </span>
+                Advanced Dermatology
+              </div>
+
+              <div className="mt-4 flex items-center gap-3">
+                <span className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">
+                  {treatmentData.subtitle}
+                </span>
+              </div>
+
+              <h1 className="mt-4 text-4xl font-bold leading-[1.1] text-[#1A1A2E] md:text-5xl lg:text-6xl">
+                {treatmentData.title}
+              </h1>
+              <div className="mt-4 h-1 w-20 rounded-full bg-[#D4146A]" />
+              <p className="mt-6 text-lg leading-relaxed text-[#5A5A72]">
+                {treatmentData.description}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-2.5">
+                {treatmentData.credentials.map((credential) => {
+                  const CredentialIcon = credential.icon
+                  return (
+                    <span key={credential.label} className="inline-flex items-center gap-2 rounded-full border border-[#EFE3CB] bg-[#FFFBF2] px-3.5 py-1.5 text-xs font-medium text-[#1A1A2E]">
+                      <CredentialIcon className="h-3.5 w-3.5 shrink-0 text-[#B4841F]" />
+                      {credential.label}
+                    </span>
+                  )
+                })}
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link href="/book-appointment" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#D4146A] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#D4146A]/25 transition hover:bg-[#B70F58]">
+                    <CalendarDays className="h-4.5 w-4.5" />
+                    Book Appointment
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <button onClick={callNow} className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#E0E0E8] bg-white px-8 py-3.5 text-sm font-semibold text-[#1A1A2E] transition hover:border-[#D4146A] hover:text-[#D4146A]">
+                    <Phone className="h-4.5 w-4.5" />
+                    Call Now
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }} className="relative">
+              <div className="overflow-hidden rounded-2xl bg-[#F7F9FC] shadow-xl ring-1 ring-[#F0F2F5]">
+                <ImageCard
+                  src={treatmentData.image}
+                  alt="Laser treatment consultation"
+                  className="h-[420px] w-full object-cover object-center md:h-[480px]"
+                />
+              </div>
+              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8, duration: 0.5 }} className="absolute -bottom-4 -right-4 rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-[#F0F2F5]">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-[#D4146A]" />
+                  <span className="text-sm font-semibold text-[#1A1A2E]">Expert Laser Care</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp} className="mb-6">
+            <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Concerns We Treat</p>
+            <h2 className="mt-2 text-2xl font-bold text-[#1A1A2E] md:text-3xl">Recognise Your Concern?</h2>
+          </motion.div>
+          <motion.div className="flex flex-wrap gap-2.5" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
+            {concerns.map((concern) => <motion.span key={concern} variants={staggerItem} className="rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]">{concern}</motion.span>)}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-[#FAFBFD] py-16">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp} className="mx-auto mb-10 max-w-2xl text-center">
+            <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Explore by Treatment</p>
+            <h2 className="mt-3 text-3xl font-bold text-[#1A1A2E] md:text-4xl">Care That Starts at <span className="text-[#D4146A]">the Root</span></h2>
+            <p className="mt-4 text-[#5A5A72]">Your treatment is selected around your skin type, hair characteristics and treatment goals.</p>
+          </motion.div>
+
+          <motion.div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={staggerContainer}>
+            {laserTreatments.map((treatment) => {
+              return (
+                <motion.div key={treatment.title} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -6 }} transition={{ duration: 0.3 }} className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/[0.03] transition hover:shadow-lg">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
+                    <ImageCard
+                      src={treatment.image}
+                      alt={treatment.title}
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-bold text-[#1A1A2E]">{treatment.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#5A5A72]">{treatment.summary}</p>
+                    <Link href={treatment.href} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#D4146A] transition group-hover:gap-3">
+                      Explore Treatment <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+
+      <section className="bg-white px-5 pb-16 lg:px-8">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp} className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl bg-[#1A1A2E] p-8 text-center md:p-12">
+          <Sparkles className="mx-auto h-6 w-6 fill-[#E8B95A] text-[#E8B95A]" />
+          <p className="mx-auto mt-5 max-w-2xl text-lg font-medium leading-relaxed text-white md:text-xl">Effective laser treatment begins with the right assessment. A clear plan helps us choose care that is safe, precise and built around you.</p>
+          <p className="mt-5 text-sm font-semibold text-[#E8B95A]">Dr. Varun Jain, MBBS, MD (Skin &amp; VD) — Gold Medalist</p>
+        </motion.div>
+      </section>
+
+      <section className="bg-[#FAFBFD] py-16">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp} className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Why Choose Us</p>
+            <h2 className="mt-3 text-3xl font-bold text-[#1A1A2E] md:text-4xl">Expert Care You Can <span className="text-[#D4146A]">Trust</span></h2>
+            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[#D4146A]" />
+          </motion.div>
+          <motion.div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={staggerContainer}>
+            {whyChoose.map((item) => {
+              const ItemIcon = item.icon
+              return <motion.div key={item.title} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -6 }} className="rounded-2xl border border-[#F0F2F5] bg-white p-6 text-center shadow-sm transition hover:shadow-md"><div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#FFF5F8] text-[#D4146A]"><ItemIcon className="h-7 w-7" /></div><h3 className="mt-4 font-bold text-[#1A1A2E]">{item.title}</h3><p className="mt-1 text-sm text-[#5A5A72]">{item.desc}</p></motion.div>
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-12 lg:px-8">
+        <div className="mx-auto max-w-7xl rounded-2xl bg-[#D4146A] p-8 text-white shadow-xl shadow-[#D4146A]/20 md:p-12">
+          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+            <div><div className="flex items-center gap-3"><Clock className="h-6 w-6 text-white/80" /><span className="text-sm font-medium text-white/80">Same Day Appointment Available</span></div><h2 className="mt-3 text-2xl font-bold md:text-3xl">Ready for Advanced Laser Care?</h2><p className="mt-2 max-w-lg text-sm text-white/85 md:text-base">Book a consultation and get a laser plan built around your goals and treatment history.</p></div>
+            <div className="flex flex-col gap-3 sm:flex-row"><motion.button onClick={callNow} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#D4146A]"><Phone className="h-4.5 w-4.5" />Call Now</motion.button><motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}><Link href="/book-appointment" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-[#D4146A] transition hover:bg-[#FFF5F8]"><CalendarDays className="h-4.5 w-4.5" />Book Appointment</Link></motion.div></div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <motion.div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-[#F0F2F5] bg-white/95 p-3 shadow-lg backdrop-blur-sm lg:hidden" initial={{ y: 100 }} animate={{ y: 0 }} transition={{ delay: 0.5, duration: 0.4 }}>
+        <motion.button onClick={callNow} whileTap={{ scale: 0.95 }} className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1A1A2E] px-4 py-2.5 text-sm font-medium text-white"><Phone className="h-4 w-4" />Call</motion.button>
+        <motion.button onClick={whatsappNow} whileTap={{ scale: 0.95 }} className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#D4146A] px-4 py-2.5 text-sm font-medium text-white"><FaWhatsapp className="h-4 w-4" />WhatsApp</motion.button>
+      </motion.div>
+    </main>
+  )
+}

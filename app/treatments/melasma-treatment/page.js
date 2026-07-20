@@ -1,0 +1,6 @@
+import { Sun } from 'lucide-react'
+import SignatureTreatmentPage from '@/app/components/SignatureTreatmentPage'
+
+export default function MelasmaTreatmentPage() {
+  return <SignatureTreatmentPage eyebrow="Signature Pigmentation Care" title="Melasma Treatment" description="A structured, dermatologist-led approach for persistent pigmentation and uneven skin tone." about="Melasma is often influenced by sun exposure, hormones and inflammation, so it needs more than a quick brightening treatment. Your plan may combine targeted skin care, carefully selected peels and, where appropriate, laser support alongside consistent sun protection." concerns={['Melasma and stubborn pigmentation', 'Uneven skin tone', 'Sun-triggered dark patches']} benefits={['Assessment of pigmentation pattern and triggers', 'A phased plan using suitable topical and in-clinic care', 'Practical sun-protection guidance to support long-term control']} steps={['Skin and pigmentation assessment', 'Personalised treatment plan', 'Progress review and maintenance guidance']} aftercare="Consistent sun protection and the recommended home-care routine are essential parts of managing melasma and preserving results." Icon={Sun} />
+}
