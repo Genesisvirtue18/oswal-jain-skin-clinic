@@ -39,6 +39,18 @@ const services = [
     description:
       'Private consultation and treatment for intimate wellness.',
   },
+  {
+    id: 'sugarcane-hydrafacial',
+    title: 'Sugarcane Hydrafacial',
+    description:
+      'Gentle exfoliation, pore cleansing and hydration-focused facial care.',
+  },
+  {
+    id: 'melasma-treatment',
+    title: 'Melasma Treatment',
+    description:
+      'Dermatologist-led care for melasma, dark patches and uneven skin tone.',
+  },
 ]
 
 export default function ServiceStep({
