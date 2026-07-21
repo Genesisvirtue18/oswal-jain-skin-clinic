@@ -90,6 +90,12 @@ const treatmentInfo = {
   'men/acne': ['Acne in men can be aggravated by shaving, sweat and heavy grooming products. Care is built around the routine you can realistically maintain.', ['Breakouts and oily skin', 'Razor bumps', 'Post-acne marks'], ['Acne assessment', 'Routine and shaving review', 'Personalised treatment and follow-up']],
 }
 
+export function generateStaticParams() {
+  return Object.entries(treatments).flatMap(([category, group]) =>
+    Object.keys(group.items).map((treatment) => ({ category, treatment }))
+  )
+}
+
 export default async function SubTreatmentPage({ params }) {
   const { category, treatment } = await params
   const group = treatments[category]

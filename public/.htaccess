@@ -1,0 +1,10 @@
+Options -MultiViews
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Serve Next.js static-export pages from their matching .html files.
+# This also works when a route has an accompanying data directory.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
