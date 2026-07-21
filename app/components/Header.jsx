@@ -20,6 +20,8 @@ const navItems = [
       { label: 'Laser Treatments', href: '/treatments/laser-treatments' },
       { label: 'Treatments for Men', href: '/treatments/treatments-men' },
       { label: 'Sexual Wellness', href: '/treatments/sexual-wellness' },
+      { label: 'Sugarcane Hydrafacial', href: '/treatments/sugarcane-hydrafacial' },
+      { label: 'Melasma Treatment', href: '/treatments/melasma-treatment' },
     ],
   },
   { label: 'Gallery', href: '/gallery' },

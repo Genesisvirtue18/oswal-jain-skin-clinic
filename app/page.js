@@ -40,45 +40,45 @@ const HERO_DOCTOR_IMAGE =
   'https://www.oswaljainskinclinic.com/image/banner/572b1ab9-6f14-474f-bed9-8fcd47f46025.jpeg'
 
 const CLINIC_IMAGE =
-  'https://www.oswaljainskinclinic.com/image/clinic/clinic.jpg'
+  '/images/clinic.jpg'
 
 const treatmentCategories = [
   {
     title: 'Face Treatments',
     desc: 'Acne, pigmentation, scars, dullness and skin rejuvenation care.',
     href: '/treatments/face-treatments',
-    image: 'https://www.oswaljainskinclinic.com/image/service/1.png',
+    image: '/images/treatments/face-treatments.jpg',
   },
   {
     title: 'Hair Treatments',
     desc: 'Hair fall, dandruff, PRP, scalp and hair growth-focused care.',
     href: '/treatments/hair-treatments',
-    image: 'https://www.skinfinityderma.com/assets/website/images/ser2.jpg',
+    image: '/images/treatments/hair-treatments.jpg',
   },
   {
     title: 'Skin Conditions',
     desc: 'Diagnosis-led care for eczema, allergies, infections and more.',
     href: '/treatments/skin-conditions',
-    image: 'https://www.skinfinityderma.com/assets/website/images/ser3.jpg',
+    image: '/images/treatments/skin-conditions.jpg',
   },
   {
     title: 'Laser Treatments',
     desc: 'Laser hair reduction, Q-switch, resurfacing and scar procedures.',
     href: '/treatments/laser-treatments',
-    image: 'https://www.skinfinityderma.com/assets/website/images/ser7.jpg',
+    image: '/images/treatments/laser-treatments.jpg',
   },
   {
     title: 'Treatments for Men',
     desc: 'Skin, hair, beard, grooming and anti-ageing care for men.',
     icon: UserRound,
     href: '/treatments/men',
-    image: 'https://www.skinfinityderma.com/assets/website/images/ser4.jpg',
+    image: '/images/treatments/treatments-men.jpg',
   },
   {
     title: 'Sexual Wellness',
     desc: 'Confidential consultation for intimate and wellness concerns.',
     href: '/treatments/sexual-wellness',
-    image: 'https://www.skinfinityderma.com/assets/website/images/olki2.jpg',
+    image: '/images/treatments/sexual-wellness.jpg',
   },
 ]
 
@@ -115,9 +115,9 @@ const clinicImages = [
 ]
 
 const testimonials = [
-  { name: 'Neha Sharma', text: 'Very good experience! Dr. Varun Jain explained everything in detail and treatment results were excellent.' },
-  { name: 'Rohit Verma', text: 'Highly professional and friendly staff. The clinic is very clean and well equipped. Very satisfied with the treatment.' },
-  { name: 'Pooja Arora', text: 'Best dermatologist in Rohini. My acne and skin issues are much better now. Thank you doctor!' },
+  { name: 'Jagrit Dayal Mathur', text: 'I had a wonderful experience at Oswal Jain Skin & Hair Clinic. The doctor provided excellent treatment for my acne, and I saw visible improvement much faster than expected. excellent.' },
+  { name: 'Khushi Sethi', text: 'Amazing results I was having dark pigmentation and tried many things than I come to know about Dr varun I consulted her and within 1 month I can see the difference.' },
+  { name: 'nupur sehra', text: 'Best experience here.. my mother is suffering fron severe allergy.. but all because of dr varun jain,she is much better from earlier.' },
 ]
 
 // Animation variants
@@ -400,7 +400,7 @@ export default function HomePage() {
       </section>
 
       {/* Treatment Categories */}
-      <section className="bg-[#FAFBFD] py-16">
+      <section className="scroll-mt-24 bg-[#FAFBFD] pb-16 pt-24 lg:pb-20 lg:pt-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <ScrollReveal>
             <div className="mb-10 text-center">
@@ -428,11 +428,16 @@ export default function HomePage() {
                 >
                   <Link
                     href={item.href}
-                    className="group block rounded-xl border border-[#F0F2F5] bg-white p-6 shadow-sm transition hover:shadow-lg hover:border-[#D4146A]/20"
+                    className="group block overflow-hidden rounded-xl border border-[#F0F2F5] bg-white shadow-sm transition hover:shadow-lg hover:border-[#D4146A]/20"
                   >
-                    <div className="min-w-0">
-                      <span className="inline-block h-1 w-10 rounded-full bg-[#F3B3CF] transition group-hover:w-14 group-hover:bg-[#D4146A]" />
-                      <div className="mt-4">
+                    <div className="overflow-hidden rounded-t-xl bg-[#F7F9FC]">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="block h-auto w-full transition duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <div className="p-6">
                         <h3 className="text-base font-bold text-[#1A1A2E]">{item.title}</h3>
                         <p className="mt-1 text-sm text-[#5A5A72] leading-relaxed">{item.desc}</p>
                         <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[#D4146A]">
@@ -440,7 +445,6 @@ export default function HomePage() {
                           <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
                         </div>
                       </div>
-                    </div>
                   </Link>
                 </motion.div>
               )
@@ -578,8 +582,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <ScrollReveal>
             <div className="mb-10 text-center">
-              <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Patient Feedback</p>
-              <h2 className="mt-2 text-3xl font-bold text-[#1A1A2E] md:text-4xl">What Our Patients Say</h2>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#5A5A72]"><img src="https://www.google.com/images/branding/searchlogo/ico/favicon.ico" alt="Google" className="h-4 w-4" />Google Reviews</div>
+              <h2 className="mt-3 text-3xl font-bold text-[#1A1A2E] md:text-4xl">What Our Patients Say</h2>
             </div>
           </ScrollReveal>
 
@@ -595,13 +599,13 @@ export default function HomePage() {
                 key={`${item.name}-${index}`}
                 variants={staggerItem}
                 whileHover={prefersReducedMotion ? {} : { y: -4 }}
-                className="rounded-xl border border-[#F0F2F5] bg-white p-6 shadow-sm"
+                className="flex min-h-64 flex-col rounded-2xl border border-[#F0F2F5] bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
-                <Quote className="mb-3 h-7 w-7 text-[#D4146A] opacity-60" />
-                <p className="text-[#5A5A72] leading-relaxed text-sm">{item.text}</p>
-                <div className="mt-4 flex items-center justify-between">
+                <div className="flex items-center justify-between"><div className="flex gap-0.5 text-[#FBBF24]">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}</div><span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5A5A72]"><img src="https://www.google.com/images/branding/searchlogo/ico/favicon.ico" alt="Google" className="h-3.5 w-3.5" />Google</span></div>
+                <p className="mt-6 text-[15px] leading-7 text-[#4C4C61]">{item.text}</p>
+                <div className="mt-auto flex items-center justify-between border-t border-[#F0F2F5] pt-5">
                   <span className="font-bold text-[#1A1A2E] text-sm">— {item.name}</span>
-                  <div className="flex gap-0.5 text-[#FBBF24]">
+                  <div className="hidden gap-0.5 text-[#FBBF24]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} className="h-3.5 w-3.5 fill-current" />
                     ))}

@@ -28,10 +28,10 @@ const WHATSAPP = '919417237526'
 
 // Official Images - From Website
 const CLINIC_IMAGE =
-  'https://www.oswaljainskinclinic.com/image/clinic/clinic.jpg'
+  '/images/clinic.jpg'
 
 const HERO_DOCTOR_IMAGE =
-  'https://www.oswaljainskinclinic.com/image/banner/572b1ab9-6f14-474f-bed9-8fcd47f46025.jpeg'
+  '/images/doctor-varun-jain.png'
 
 const galleryImages = [
   {
