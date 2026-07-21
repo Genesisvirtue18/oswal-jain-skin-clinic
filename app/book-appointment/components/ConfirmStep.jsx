@@ -10,18 +10,20 @@ import {
   BadgeCheck,
   ArrowLeft,
 } from 'lucide-react'
+import { useState } from 'react'
 
 export default function ConfirmStep({
   appointment,
   previousStep,
 }) {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isBooked, setIsBooked] = useState(false)
 
   const handleConfirm = async () => {
+    if (isSubmitting || isBooked) return
+    setIsSubmitting(true)
 
     try {
-
-      // Replace this with your API
-
       const res = await fetch('/api/appointments', {
         method: 'POST',
         headers: {
@@ -31,12 +33,11 @@ export default function ConfirmStep({
       })
 
       if (res.ok) {
-
-        alert('Appointment Booked Successfully!')
+        setIsBooked(true)
 
       } else {
-
-        alert('Something went wrong.')
+        const data = await res.json().catch(() => ({}))
+        alert(data.error || 'Something went wrong.')
 
       }
 
@@ -45,6 +46,8 @@ export default function ConfirmStep({
       console.log(error)
 
       alert('Unable to submit appointment.')
+    } finally {
+      setIsSubmitting(false)
 
     }
 
@@ -301,11 +304,10 @@ export default function ConfirmStep({
 
         <button
           onClick={handleConfirm}
-          className="rounded-2xl bg-[#D4146A] px-10 py-4 font-semibold text-white transition hover:bg-[#B70F58]"
+          disabled={isSubmitting || isBooked}
+          className="rounded-2xl bg-[#D4146A] px-10 py-4 font-semibold text-white transition hover:bg-[#B70F58] disabled:cursor-not-allowed disabled:opacity-70"
         >
-
-          Confirm Appointment
-
+          {isBooked ? 'Appointment Booked' : isSubmitting ? 'Booking...' : 'Confirm Appointment'}
         </button>
 
       </div>
