@@ -28,7 +28,9 @@ const PHONE_1 = '+91 94172 37526'
 const PHONE_2 = '+91 94785 08950'
 const WHATSAPP = '919417237526'
 const EMAIL = 'oswaljainskinclinic@gmail.com'
-const ADDRESS = '1st Floor, A-1/19, 20, 21, Sector 6 Road, near Ayodhya Chowk, Rohini, Delhi - 110085'
+const ADDRESS = '1st Floor, 227/D-15, above Khowal Jewellers / Hum Sabki Rasoi, Ayodhya Chowk, Sector 3D, Rohini, Delhi - 110085'
+const MAP_DIRECTIONS_URL = 'https://www.google.com/maps/dir/?api=1&destination=28.7065813%2C77.1097731'
+const MAP_EMBED_URL = 'https://www.google.com/maps?q=OSWAL+JAIN+SKIN+%26+HAIR+CLINIC+-+Dr+Varun+Jain%2C+28.7065813%2C77.1097731&z=16&output=embed'
 const WORKING_HOURS = '12:00 PM To 8:00 PM'
 
 const fadeInUp = {
@@ -134,7 +136,7 @@ export default function ContactPage() {
       icon: MapPinned,
       title: 'Visit Us',
       details: [ADDRESS],
-      action: () => window.open('https://maps.google.com/?q=' + encodeURIComponent(ADDRESS), '_blank'),
+      action: () => window.open(MAP_DIRECTIONS_URL, '_blank'),
       actionLabel: 'Get Directions',
     },
     {
@@ -169,7 +171,7 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="bg-[#FAFBFD] py-14 lg:py-16">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-8 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+          <div className="mb-9 text-center [&>p]:mx-auto">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-[#D4146A]">Reach us directly</p>
               <h2 className="mt-2 text-2xl font-bold text-[#1A1A2E] md:text-3xl">Choose the easiest way to connect</h2>
@@ -197,7 +199,7 @@ export default function ContactPage() {
                     <Icon className="h-5.5 w-5.5" />
                   </div>
                   <h3 className="mt-5 text-lg font-bold text-[#1A1A2E]">{item.title}</h3>
-                  <div className="mt-2 space-y-1.5">{item.details.map((detail, i) => <p key={i} className="text-sm leading-relaxed text-[#5A5A72]">{detail}</p>)}</div>
+                  <div className="mt-2 space-y-1.5">{item.details.map((detail, i) => <p key={i} className={`text-sm leading-relaxed text-[#5A5A72] ${item.title === 'Call Us' ? 'font-sans tabular-nums whitespace-nowrap' : ''}`}>{detail}</p>)}</div>
                   {item.action && (
                     <motion.button
                       onClick={item.action}
@@ -334,9 +336,6 @@ export default function ContactPage() {
             {/* Map */}
             <ScrollReveal delay={0.2}>
               <div className="rounded-2xl border border-[#F0F2F5] bg-white p-6 shadow-sm md:p-8">
-                <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">
-                  Find Us
-                </p>
                 <h2 className="mt-2 text-3xl font-bold text-[#1A1A2E] md:text-4xl">
                   Our <span className="text-[#D4146A]">Location</span>
                 </h2>
@@ -346,7 +345,7 @@ export default function ContactPage() {
 
                 <div className="mt-6 overflow-hidden rounded-xl border border-[#F0F2F5] shadow-sm">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.543201234567!2d77.12345678901234!3d28.71890123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d03a123456789%3A0x987654321abcdef!2sRohini%20Sector%206%2C%20Delhi!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                    src={MAP_EMBED_URL}
                     width="100%"
                     height="400"
                     style={{ border: 0 }}

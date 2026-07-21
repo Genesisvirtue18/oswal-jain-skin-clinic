@@ -9,7 +9,7 @@ const PHONE_1 = '+91 94172 37526'
 const PHONE_2 = '+91 94785 08950'
 const WHATSAPP = '919417237526'
 const EMAIL = 'oswaljainskinclinic@gmail.com'
-const ADDRESS = '1st Floor, A-1/19, 20, 21, Sector 6 Road, near Ayodhya Chowk, Rohini, Delhi - 110085'
+const ADDRESS = '1st Floor, 227/D-15, above Khowal Jewellers / Hum Sabki Rasoi, Ayodhya Chowk, Sector 3D, Rohini, Delhi - 110085'
 
 const navItems = [
   { label: 'Home', href: '/' },
