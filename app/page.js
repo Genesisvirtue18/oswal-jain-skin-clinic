@@ -39,9 +39,6 @@ const WHATSAPP = '919417237526'
 const HERO_DOCTOR_IMAGE =
   '/images/doctor-varun-jain.png'
 
-const CLINIC_IMAGE =
-  '/images/clinic.jpg'
-
 const treatmentCategories = [
   {
     title: 'Face Treatments',
@@ -107,17 +104,69 @@ const doctorHighlights = [
   { title: 'Ex-PGIMS-1', desc: 'Formerly associated with PGIMS, Rohtak.', icon: Building2 },
 ]
 
-const clinicImages = [
-  { title: 'Reception Area', image: CLINIC_IMAGE },
-  { title: 'Waiting Area', image: CLINIC_IMAGE },
-  { title: 'Procedure Room', image: CLINIC_IMAGE },
-  { title: 'Consultation Room', image: CLINIC_IMAGE },
-]
-
 const testimonials = [
   { name: 'Jagrit Dayal Mathur', text: 'I had a wonderful experience at Oswal Jain Skin & Hair Clinic. The doctor provided excellent treatment for my acne, and I saw visible improvement much faster than expected. excellent.' },
   { name: 'Khushi Sethi', text: 'Amazing results I was having dark pigmentation and tried many things than I come to know about Dr varun I consulted her and within 1 month I can see the difference.' },
   { name: 'nupur sehra', text: 'Best experience here.. my mother is suffering fron severe allergy.. but all because of dr varun jain,she is much better from earlier.' },
+]
+
+const oldBlogStories = [
+  {
+    category: 'Cryotherapy Wart Treatment',
+    title: 'Mole or Wart? How to Know When It’s Time to Get It Examined and Removed',
+    excerpt: 'Unsure whether that skin growth is a mole or a wart? Learn about removal options, warning signs and when to seek professional advice.',
+    date: 'July 12, 2026',
+    image: '/images/blogs/mole-or-wart.png',
+    href: 'https://oswaljainskinclinic.com/blogs/',
+  },
+  {
+    category: 'Allergic Skin Reaction',
+    title: 'Skin Allergy Symptoms You Should Never Ignore and When to Visit a Dermatologist',
+    excerpt: 'Discover symptoms you should never ignore and learn when professional skin-allergy treatment is the right next step.',
+    date: 'July 8, 2026',
+    image: '/images/treatments/skin-conditions.jpg',
+    href: 'https://oswaljainskinclinic.com/blogs/',
+  },
+  {
+    category: 'Androgenetic Alopecia Treatment',
+    title: 'PRP Hair Treatment Explained: Who Can Benefit and What Results Can You Expect?',
+    excerpt: 'Learn who can benefit from PRP hair treatment, how the procedure works and what results to expect from clinically backed care.',
+    date: 'July 5, 2026',
+    image: '/images/treatments/hair-treatments.jpg',
+    href: 'https://oswaljainskinclinic.com/blogs/',
+  },
+]
+
+void oldBlogStories
+
+const blogStories = [
+  {
+    category: 'Face Treatments',
+    title: 'Best Skin Rejuvenation Treatment in Rohini Delhi | Healthy Glowing Skin with Dr. Varun Jain',
+    excerpt: 'Healthy, glowing skin is something many people wish to achieve. Learn how professional skin rejuvenation can address the effects of sunlight, pollution, stress and ageing.',
+    date: 'August 7, 2026',
+    image: '/images/blogs/skin-rejuvenation-treatment-rohini.png',
+    imageAlt: 'Skin rejuvenation treatment in Rohini Delhi',
+    href: 'https://oswaljainskinclinic.com/blogs/skin-rejuvenation-treatment-rohini/',
+  },
+  {
+    category: 'Skin Treatments',
+    title: 'Open Pores Treatment in Rohini Delhi | Dermatologist-Recommended Solutions by Dr. Varun Jain',
+    excerpt: 'Visible open pores can make the skin look uneven. Explore dermatologist-recommended approaches to smoother, healthier-looking skin.',
+    date: 'August 4, 2026',
+    image: '/images/blogs/open-pores-treatment-rohini.png',
+    imageAlt: 'Open pores treatment in Rohini Delhi',
+    href: 'https://oswaljainskinclinic.com/blogs/open-pores-treatment-rohini-delhi/',
+  },
+  {
+    category: 'Hair Treatments',
+    title: 'Hair Regrowth Treatment in Rohini Delhi | Restore Healthy Hair with Dr. Varun Jain',
+    excerpt: 'Hair thinning can affect confidence. Discover expert guidance on restoring fuller, healthier hair with personalised treatment options.',
+    date: 'August 2, 2026',
+    image: '/images/blogs/hair-regrowth-treatment-rohini.png',
+    imageAlt: 'Hair regrowth treatment in Rohini Delhi',
+    href: 'https://oswaljainskinclinic.com/blogs/hair-regrowth-treatment-rohini-delhi/',
+  },
 ]
 
 // Animation variants
@@ -542,35 +591,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Clinic Preview */}
+      {/* Instagram reels */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <ScrollReveal>
             <div className="mb-10 text-center">
-              <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Clinic Preview</p>
-              <h2 className="mt-2 text-3xl font-bold text-[#1A1A2E] md:text-4xl">Modern Clinic. Comfortable Care.</h2>
+              <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">From our Instagram</p>
+              <h2 className="mt-2 text-3xl font-bold text-[#1A1A2E] md:text-4xl">See Our Latest Clinic Reels</h2>
             </div>
           </ScrollReveal>
 
           <motion.div
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
-            {clinicImages.map((item) => (
-              <motion.div key={item.title} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -4 }}>
-                <Link href="/gallery" className="group block overflow-hidden rounded-xl border border-[#F0F2F5] bg-white transition hover:shadow-md">
-                  <div className="h-52 overflow-hidden bg-[#F7F9FC]">
-                    <motion.div whileHover={prefersReducedMotion ? {} : { scale: 1.08 }} transition={{ duration: 0.4 }} className="h-full w-full">
-                      <ImageCard src={item.image} alt={item.title} className="h-full w-full object-cover object-center" />
-                    </motion.div>
-                  </div>
-                  <div className="p-4 text-center">
-                    <h3 className="font-bold text-[#1A1A2E] text-sm">{item.title}</h3>
-                  </div>
-                </Link>
+            {['DcavYQCkx2D', 'DcORlpVk3A0', 'Db7oUx8CdMK', 'DcBIJmjD1a0'].map((reelId) => (
+              <motion.div key={reelId} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -4 }} className="relative overflow-hidden rounded-xl border border-[#F0F2F5] bg-black shadow-sm">
+                <div className="h-[370px] overflow-hidden">
+                  <iframe
+                    title="Oswal Jain Skin & Hair Clinic Instagram reel"
+                    src={`https://www.instagram.com/reel/${reelId}/embed/`}
+                    className="h-[680px] w-[calc(100%+18px)] border-0"
+                    loading="lazy"
+                    allowFullScreen
+                  />
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -612,6 +660,45 @@ export default function HomePage() {
                   </div>
                 </div>
               </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Blog stories */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <ScrollReveal>
+            <div className="mb-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#D4146A]">Clinic journal</p>
+              <h2 className="mt-2 text-3xl font-bold text-[#1A1A2E] md:text-4xl">Learn. Understand. Care better.</h2>
+              <p className="mt-3 max-w-2xl text-[15px] leading-7 text-[#5A5A72]">Practical dermatology insights from Dr. Varun Jain to help you make confident decisions about your skin and hair.</p>
+            </div>
+          </ScrollReveal>
+
+          <motion.div
+            className="grid gap-6 md:grid-cols-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+          >
+            {blogStories.map((story) => (
+              <motion.article key={story.title} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -5 }}>
+                <Link href={story.href} target="_blank" rel="noreferrer" className="group block h-full overflow-hidden rounded-2xl border border-[#F0F2F5] bg-white shadow-sm transition hover:shadow-lg">
+                  <div className="aspect-[4/3] overflow-hidden bg-[#FFF5F8]">
+                    <img src={story.image} alt={story.imageAlt} className="h-full w-full object-contain" />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#D4146A]">{story.category}</p>
+                    <h3 className="mt-3 text-xl font-bold leading-snug text-[#1A1A2E] group-hover:text-[#D4146A]">{story.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[#5A5A72]">{story.excerpt}</p>
+                    <div className="mt-5 flex justify-end">
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4146A]">Read on our blog <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.article>
             ))}
           </motion.div>
         </div>

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { MapPinned, Phone, MailCheck, Clock4 } from 'lucide-react'
-import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa'
+import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
 const PHONE_1 = '+91 94172 37526'
 const PHONE_2 = '+91 94785 08950'
@@ -15,7 +15,6 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Doctor', href: '/about' },
   { label: 'Treatments', href: '/treatments' },
-  { label: 'Gallery', href: '/gallery' },
   { label: 'Blogs', href: '/blogs/' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -29,7 +28,7 @@ const treatmentCategories = [
   { title: 'Sexual Wellness', href: '/treatments/sexual-wellness' },
 ]
 
-const LOGO_IMAGE = '/images/logo_oswal_jain.jpeg'
+const LOGO_IMAGE = '/images/logo_oswal_jain.png'
 const LOGO_FALLBACK = 'https://www.oswaljainskinclinic.com/image/image/logoff.jpeg'
 
 function Logo() {
@@ -38,7 +37,7 @@ function Logo() {
       <img
         src={LOGO_IMAGE}
         alt="Oswal Jain Skin & Hair Clinic"
-        className="h-12 w-auto object-contain md:h-14"
+        className="h-14 w-auto object-contain md:h-16"
         onError={(e) => {
           e.currentTarget.src = LOGO_FALLBACK
         }}
@@ -66,18 +65,15 @@ export default function Footer() {
               skin, hair, nails, laser and cosmetic concerns in Rohini, Delhi.
             </p>
             <div className="mt-5 flex gap-2.5">
-              <motion.a href="#" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-[#1A1A2E]">
+              <motion.a href="https://www.facebook.com/profile.php?id=100087962853803" target="_blank" rel="noreferrer" aria-label="Visit us on Facebook" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-[#1A1A2E]">
                 <FaFacebookF className="h-3.5 w-3.5" />
               </motion.a>
-              <motion.a href="#" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-[#D4146A]">
+              <motion.a href="https://www.instagram.com/oswaljain_dermaclinic?igsi=MXAwNnNrZHc4cGJvcQ==" target="_blank" rel="noreferrer" aria-label="Visit us on Instagram" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-[#D4146A]">
                 <FaInstagram className="h-3.5 w-3.5" />
               </motion.a>
               <motion.button onClick={whatsappNow} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-green-600">
                 <FaWhatsapp className="h-3.5 w-3.5" />
               </motion.button>
-              <motion.a href="#" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-red-600">
-                <FaYoutube className="h-3.5 w-3.5" />
-              </motion.a>
             </div>
           </div>
 
@@ -119,11 +115,15 @@ export default function Footer() {
               </div>
               <div className="flex gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-[#FF5AA1] mt-0.5" />
-                <span>{PHONE_1}, {PHONE_2}</span>
+                <span>
+                  <a href="tel:+919417237526" className="transition hover:text-white">{PHONE_1}</a>
+                  {', '}
+                  <a href="tel:+919478508950" className="transition hover:text-white">{PHONE_2}</a>
+                </span>
               </div>
               <div className="flex gap-3">
                 <MailCheck className="h-4 w-4 shrink-0 text-[#FF5AA1] mt-0.5" />
-                <span>{EMAIL}</span>
+                <a href={`mailto:${EMAIL}`} className="transition hover:text-white">{EMAIL}</a>
               </div>
               <div className="flex gap-3">
                 <Clock4 className="h-4 w-4 shrink-0 text-[#FF5AA1] mt-0.5" />

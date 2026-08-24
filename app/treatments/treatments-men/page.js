@@ -327,18 +327,6 @@ export default function MenTreatmentsPage() {
                 />
               </div>
 
-              {/* Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -bottom-4 -right-4 rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-[#F0F2F5]"
-              >
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-[#D4146A]" />
-                  <span className="text-sm font-semibold text-[#1A1A2E]">Expert Care</span>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>

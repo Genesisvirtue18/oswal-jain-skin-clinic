@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, CalendarDays, ChevronDown } from 'lucide-react'
+import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -24,12 +25,11 @@ const navItems = [
       { label: 'Melasma Treatment', href: '/treatments/melasma-treatment' },
     ],
   },
-  { label: 'Gallery', href: '/gallery' },
   { label: 'Blogs', href: '/blogs/' },
   { label: 'Contact', href: '/contact' },
 ]
 
-const LOGO_IMAGE = '/images/logo_oswal_jain.jpeg'
+const LOGO_IMAGE = '/images/logo_oswal_jain.png'
 const LOGO_FALLBACK = 'https://www.oswaljainskinclinic.com/image/image/logoff.jpeg'
 
 function Logo() {
@@ -38,7 +38,7 @@ function Logo() {
       <img
         src={LOGO_IMAGE}
         alt="Oswal Jain Skin & Hair Clinic"
-        className="h-12 w-auto object-contain md:h-14"
+        className="h-14 w-auto object-contain md:h-16"
         onError={(e) => {
           e.currentTarget.src = LOGO_FALLBACK
         }}
@@ -148,6 +148,33 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
+            <a
+              href="https://www.facebook.com/profile.php?id=100087962853803"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit us on Facebook"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#F0F2F5] text-[#1877F2] transition hover:border-[#1877F2] hover:bg-[#1877F2]/5"
+            >
+              <FaFacebookF className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/oswaljain_dermaclinic?igsi=MXAwNnNrZHc4cGJvcQ=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit us on Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#F0F2F5] text-[#D4146A] transition hover:border-[#D4146A] hover:bg-[#FFF5F8]"
+            >
+              <FaInstagram className="h-4 w-4" />
+            </a>
+            <a
+              href="https://wa.me/919417237526"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Chat with us on WhatsApp"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#F0F2F5] text-[#25D366] transition hover:border-[#25D366] hover:bg-[#25D366]/5"
+            >
+              <FaWhatsapp className="h-4 w-4" />
+            </a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/book-appointment"

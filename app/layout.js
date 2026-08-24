@@ -1,5 +1,6 @@
 import { Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { routeSeo } from '@/app/seo'
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -10,11 +11,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-export const metadata = {
-  title: 'Oswal Jain Skin & Hair Clinic | Dermatologist in Rohini',
-  description:
-    'Oswal Jain Skin & Hair Clinic in Rohini, Delhi offers skin, hair, nail, laser and cosmetic dermatology care by Dr. Varun Jain.',
-}
+export const metadata = routeSeo.home
 
 export default function RootLayout({ children }) {
   return (

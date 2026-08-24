@@ -343,12 +343,6 @@ export default function LaserTreatmentsPage() {
               <div className="overflow-hidden rounded-2xl bg-[#F7F9FC] shadow-xl ring-1 ring-[#F0F2F5]">
                 <ImageCard src={treatmentData.image} alt="Laser treatment consultation" className="h-[420px] w-full object-cover object-center md:h-[480px]" />
               </div>
-              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8, duration: 0.5 }} className="absolute -bottom-4 -right-4 rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-[#F0F2F5]">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-[#D4146A]" />
-                  <span className="text-sm font-semibold text-[#1A1A2E]">Concern-Led Laser Care</span>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -369,7 +363,7 @@ export default function LaserTreatmentsPage() {
       <section className="bg-[#FAFBFD] py-16">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeInUp} className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Shop by Concern</p>
+            <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Book by Concern</p>
             <h2 className="mt-3 text-3xl font-bold text-[#1A1A2E] md:text-4xl">Start With What You Want to Improve</h2>
             <p className="mt-4 text-[#5A5A72]">You do not need to know the machine name. Choose the concern, then we match the safest technology for your skin.</p>
           </motion.div>
