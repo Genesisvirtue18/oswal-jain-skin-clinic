@@ -33,8 +33,15 @@ const treatments = {
   'laser-treatments': {
     label: 'Laser Treatments',
     items: {
-      'laser-hair-removal': ['Laser Hair Removal', 'Reduce unwanted hair with a laser plan selected for your skin and hair type.', '/images/treatments/laser-treatments/Laser-Hair-Removal.jpg'],
-      'laser-resurfacing': ['Laser Resurfacing', 'Improve wrinkles, scars and texture while supporting smoother-looking skin.', '/images/treatments/laser-treatments/LaserResurfacing.jpg'],
+      'laser-hair-removal': ['Diode Laser Hair Removal', 'High-speed targeted light disables hair follicles for smoother, stubble-free skin without the repeated pain of waxing or ingrown hairs.', '/images/treatments/laser-treatments/Laser-Hair-Removal.jpg'],
+      'laser-resurfacing': ['Laser Resurfacing', 'A resurfacing consultation helps decide whether CO2, Fractional Laser, MNRF or Dermapen is better for scars, wrinkles and uneven texture.', '/images/treatments/laser-treatments/LaserResurfacing.jpg'],
+      'q-switch-laser': ['Q-Switch Laser', 'Ultra-short pulses of high-intensity light shatter pigment particles to fade freckles, sunspots, deep hyperpigmentation and selected tattoos.', '/images/treatments/laser-treatments/q-switch-laser-generated.png'],
+      mnrf: ['MNRF', 'Medical needles deliver radiofrequency heat into the dermis to smooth pitted scars, refine pores and tighten early sagging from within.', '/images/treatments/laser-treatments/mnrf-generated.png'],
+      'co2-laser': ['CO2 Laser', 'An ablative laser removes damaged outer skin layers for deeper wrinkles, severe scars and selected skin growths after suitability assessment.', '/images/treatments/laser-treatments/co2-laser-generated.png'],
+      'fractional-laser': ['Fractional Laser', 'Pixelated laser light treats microscopic zones while surrounding tissue stays intact, supporting smoother texture and faster healing.', '/images/treatments/laser-treatments/fractional-laser-generated.png'],
+      dermapen: ['Dermapen', 'Automated micro-needles create controlled micro-injuries without heat to refresh superficial scars, fine lines and tired-looking skin.', '/images/treatments/laser-treatments/dermapen-generated.png'],
+      hifu: ['HIFU', 'Focused ultrasound bypasses the skin surface to heat deeper support tissue for non-surgical lifting, jawline definition and double-chin concerns.', '/images/treatments/laser-treatments/hifu-generated.png'],
+      'carbon-laser-peel': ['Carbon Laser Peel', 'A thin carbon layer is applied and gently lasered away to reduce oiliness, minimise pores and create an instant event-ready glow.', '/images/treatments/laser-treatments/carbon-laser-peel-generated.png'],
     },
   },
   'hair-treatments': {
@@ -74,8 +81,15 @@ const treatmentInfo = {
   'skin-conditions/Fungal-Infections': ['Fungal infections can mimic other rashes, so confirming the cause matters. Treatment focuses on clearing the infection and reducing recurrence.', ['Itchy, ring-shaped or scaly rash', 'Recurring fungal infection', 'Rash in warm or skin-fold areas'], ['Clinical assessment', 'Targeted antifungal treatment', 'Hygiene and recurrence-prevention guidance']],
   'skin-conditions/Wart&MoleCare': ['Warts and moles should be assessed before removal. Your dermatologist will determine whether observation, treatment or removal is most appropriate.', ['New or changing mole', 'Persistent wart', 'Cosmetic concern about a lesion'], ['Lesion examination', 'Discussion of suitable removal options', 'Aftercare and review guidance']],
   'skin-conditions/Allergy-Management': ['Skin allergies and hives can have many triggers. A detailed history helps distinguish allergic reactions from other causes of itching and rash.', ['Hives or sudden rash', 'Repeated irritation after products or exposures', 'Itching with no clear cause'], ['History and trigger review', 'Treatment for active symptoms', 'Practical avoidance and skin-care guidance']],
-  'laser-treatments/laser-hair-removal': ['Laser hair removal works by targeting pigment in hair follicles. A safe plan considers your hair colour, skin type, treatment area and growth cycle.', ['Unwanted facial or body hair', 'Frequent shaving or waxing', 'Ingrown-hair concerns'], ['Skin and hair assessment', 'Patch test where indicated', 'A series of planned treatment sessions']],
-  'laser-treatments/laser-resurfacing': ['Laser resurfacing targets damaged skin layers to improve texture, fine lines and scars. The right setting and aftercare are essential for safe results.', ['Acne scars and uneven texture', 'Fine lines', 'Sun-damaged or dull-looking skin'], ['Detailed skin assessment', 'Suitability and downtime discussion', 'Post-procedure recovery plan']],
+  'laser-treatments/laser-hair-removal': ['Diode Laser uses high-speed, targeted light energy to disable active hair follicles. It is best for permanent hair reduction on the face and body, especially where coarse hair causes shaving, waxing or ingrown-hair frustration. It is highly effective across most skin tones when settings are selected for your hair and skin.', ['Permanent hair reduction on face and body', 'Silky, stubble-free skin goals', 'Waxing pain, shaving irritation or ingrown hairs', 'Coarse hair on suitable treatment areas'], ['Skin tone and hair assessment', 'Laser compatibility and session planning', 'Pre-care, aftercare and follow-up guidance']],
+  'laser-treatments/laser-resurfacing': ['Laser resurfacing is a concern-led consultation for scars, wrinkles and uneven texture. Depending on your concern and skin profile, your dermatologist may guide you toward CO2 Laser, Fractional Laser, MNRF or Dermapen rather than choosing a device by name alone.', ['Wrinkles and fine lines', 'Acne scars and uneven texture', 'Stretch marks or rough skin', 'Need to choose the right resurfacing method'], ['Detailed scar and skin assessment', 'Technology selection based on your concern', 'Preparation, skin protection and review plan']],
+  'laser-treatments/q-switch-laser': ['Q-Switch Laser uses ultra-short pulses of high-intensity light to shatter pigment particles. It is best for tattoo removal planning, freckles, sunspots and deep hyperpigmentation, helping fade stubborn dark spots for a clearer-looking complexion. It is safe for many tones, with precise settings needed on darker skin.', ['Tattoo removal planning', 'Freckles and sunspots', 'Deep or stubborn hyperpigmentation', 'Uneven complexion linked to pigment'], ['Pigment pattern and skin-tone assessment', 'Session plan with precise laser settings', 'Sun protection and pigment-care guidance']],
+  'laser-treatments/mnrf': ['MNRF, or Microneedling Radiofrequency, uses medical needles to deliver thermal radiofrequency energy deep into the dermis. It is best for deep acne scars, large pores and early skin sagging, helping smooth pitted scars and tighten skin from the inside out. It is an excellent option for all skin types, including darker skin, because the energy is delivered below the surface.', ['Deep acne scars', 'Large or visible pores', 'Early skin sagging', 'Pitted or uneven scar texture'], ['Scar-depth mapping and suitability check', 'Needle-depth and energy planning', 'Skin barrier support and review visits']],
+  'laser-treatments/co2-laser': ['CO2 Laser is an ablative resurfacing laser that removes damaged outer skin layers. It is best for severe wrinkles, deep structural scars and selected skin growths, offering a more dramatic skin-renewal option for suitable patients. It is usually best selected carefully for lighter or lower-risk skin profiles.', ['Severe wrinkles', 'Deep structural scars', 'Selected skin growths', 'Advanced texture irregularity'], ['Medical suitability and skin-risk assessment', 'Resurfacing plan matched to the concern', 'Detailed pre-care and recovery guidance']],
+  'laser-treatments/fractional-laser': ['Fractional Laser uses pixels of laser light to treat microscopic zones while leaving surrounding tissue intact. It is best for fine lines, mild acne scarring, stretch marks and uneven texture, supporting smoother skin with faster healing than traditional full-field CO2 resurfacing. It is more versatile across diverse skin tones than traditional CO2.', ['Fine lines', 'Mild acne scars', 'Stretch marks', 'Uneven or rough texture'], ['Skin texture and tone evaluation', 'Fractional resurfacing plan', 'Aftercare, sunscreen and maintenance guidance']],
+  'laser-treatments/dermapen': ['Dermapen is automated microneedling: rapidly vibrating micro-needles create controlled micro-injuries without heat. It is best for superficial acne scars, fine lines and boosting product absorption, helping skin look plumper, glowing and revitalised. It is widely suitable for all skin tones and types after assessment.', ['Superficial acne scars', 'Fine lines', 'Dull or tired-looking skin', 'Skin revitalisation and product-absorption support'], ['Skin sensitivity and scar assessment', 'Microneedling depth and session plan', 'Hydration, barrier care and follow-up guidance']],
+  'laser-treatments/hifu': ['HIFU uses high-intensity focused ultrasound energy that bypasses the surface and heats deeper structural tissue. It is best for non-surgical face lifting, jawline definition and double-chin concerns, helping lift sagging skin and sharpen facial contours. It is safe for all skin tones because it works beneath the skin surface.', ['Non-surgical face lifting', 'Jawline definition', 'Double-chin concerns', 'Sagging skin and contour softening'], ['Face and jawline assessment', 'Ultrasound depth and area mapping', 'Maintenance and review planning']],
+  'laser-treatments/carbon-laser-peel': ['Carbon Laser Peel applies a thin carbon layer to the skin, then gently lasers it away. It is best for instant brightness, reducing oiliness and minimising pores, making it a popular event-ready glow treatment. It is highly safe and popular across skin tones when performed conservatively.', ['Instant brightness', 'Oiliness and congestion', 'Visible pores', 'Pre-event glow goals'], ['Skin oiliness and sensitivity check', 'Carbon peel and laser-toning plan', 'Glow maintenance and sun-care advice']],
   'hair-treatments/hairloss': ['Hair loss can be caused by genetics, stress, nutritional factors, hormonal changes or scalp conditions. A diagnosis helps identify the most suitable treatment path.', ['Excessive shedding', 'Thinning hair or a widening part', 'Early pattern hair loss'], ['Scalp and hair assessment', 'Discussion of appropriate medical care', 'Progress review and supportive aftercare']],
   'hair-treatments/hairtransplant': ['A hair transplant redistributes healthy hair follicles to areas of thinning. Suitability depends on your pattern of hair loss, donor area and long-term hair-restoration goals.', ['Receding hairline', 'Thinning crown or hairline', 'Stable hair loss with adequate donor hair'], ['Hair and donor-area assessment', 'Personalised restoration plan', 'Post-procedure care and growth monitoring']],
   'hair-treatments/Growththerapy': ['Growth-factor therapy is a regenerative option used to support scalp and follicle health. Your dermatologist will assess whether it suits your type and stage of hair loss.', ['Early thinning', 'Hair that feels weaker or less dense', 'Support alongside a medical hair-care plan'], ['Scalp assessment', 'Treatment suitability discussion', 'Planned sessions and progress review']],
@@ -88,6 +102,63 @@ const treatmentInfo = {
   'men/anti-ageing': ['Men benefit from an approach that respects their natural facial structure. The focus is on looking less tired and maintaining a natural appearance.', ['Fine lines and wrinkles', 'Sagging or volume changes', 'Tired-looking skin'], ['Facial assessment', 'Personalised non-surgical options', 'Skin-quality and maintenance guidance']],
   'men/skin-brightening': ['Tan, dullness and uneven tone are commonly linked to regular sun exposure. Treatment is paired with practical daily protection to help results last.', ['Sun tan and dark patches', 'Uneven skin tone', 'Dull or rough skin'], ['Skin assessment', 'Brightening and resurfacing options', 'Sunscreen and home-care advice']],
   'men/acne': ['Acne in men can be aggravated by shaving, sweat and heavy grooming products. Care is built around the routine you can realistically maintain.', ['Breakouts and oily skin', 'Razor bumps', 'Post-acne marks'], ['Acne assessment', 'Routine and shaving review', 'Personalised treatment and follow-up']],
+}
+
+const laserProfiles = {
+  'laser-hair-removal': {
+    what: 'High-speed, targeted light energy disables active hair follicles.',
+    best: 'Permanent hair reduction on the face and body.',
+    benefit: 'Silky, stubble-free skin with less waxing pain, shaving irritation and ingrown hairs.',
+    skin: 'Highly effective across most skin tones, especially for coarse dark hair.',
+  },
+  'laser-resurfacing': {
+    what: 'A resurfacing consultation that helps choose the right device for your scar, wrinkle or texture concern.',
+    best: 'Patients comparing CO2, Fractional Laser, MNRF or Dermapen for smoother skin.',
+    benefit: 'A clearer treatment direction instead of guessing by machine name.',
+    skin: 'Suitability depends on scar depth, skin tone, sensitivity and treatment goals.',
+  },
+  'q-switch-laser': {
+    what: 'Ultra-short pulses of high-intensity light shatter pigment particles.',
+    best: 'Tattoo fading, freckles, sunspots and deep hyperpigmentation.',
+    benefit: 'Fades stubborn dark spots to reveal a clearer, more even-looking complexion.',
+    skin: 'Safe for many skin tones, with precise settings required on darker skin.',
+  },
+  mnrf: {
+    what: 'Medical needles deliver thermal radiofrequency energy deep into the dermis.',
+    best: 'Deep acne scars, large pores and early skin sagging.',
+    benefit: 'Smooths pitted scars and tightens skin from the inside out.',
+    skin: 'Excellent for all skin types, including darker skin, with lower surface-pigment risk.',
+  },
+  'co2-laser': {
+    what: 'An ablative laser removes damaged outer layers of skin.',
+    best: 'Severe wrinkles, deep structural scars and selected skin growths.',
+    benefit: 'A more dramatic skin-renewal option for suitable patients.',
+    skin: 'Best selected carefully, usually for lighter or lower-risk skin profiles.',
+  },
+  'fractional-laser': {
+    what: 'Pixels of laser light treat microscopic zones while surrounding tissue stays intact.',
+    best: 'Fine lines, mild acne scarring, stretch marks and uneven texture.',
+    benefit: 'Smoother texture with faster healing than full-field ablative resurfacing.',
+    skin: 'More versatile across diverse skin tones than traditional CO2 resurfacing.',
+  },
+  dermapen: {
+    what: 'Rapidly vibrating micro-needles create controlled micro-injuries without heat.',
+    best: 'Superficial acne scars, fine lines and product-absorption support.',
+    benefit: 'Plumper, glowing, revitalised-looking skin.',
+    skin: 'Widely suitable for all skin tones and types after assessment.',
+  },
+  hifu: {
+    what: 'High-intensity focused ultrasound bypasses the surface to heat deeper support tissue.',
+    best: 'Non-surgical face lifting, jawline definition and double-chin concerns.',
+    benefit: 'Lifts sagging skin and sharpens facial contours without surgery.',
+    skin: 'Safe for all skin tones because it works beneath the skin surface.',
+  },
+  'carbon-laser-peel': {
+    what: 'A thin carbon layer is applied to the skin, then gently lasered away.',
+    best: 'Instant brightness, oiliness reduction and visible pore refinement.',
+    benefit: 'An event-ready glow with a clean, refreshed complexion.',
+    skin: 'Popular across skin tones when performed conservatively.',
+  },
 }
 
 export function generateStaticParams() {
@@ -109,6 +180,7 @@ export default async function SubTreatmentPage({ params }) {
     ['A concern affecting your skin, hair or scalp', 'Need for a personalised dermatology assessment', 'Guidance on suitable treatment options'],
     ['Clinical consultation', 'Personalised treatment discussion', 'Aftercare and follow-up guidance'],
   ]
+  const laserProfile = category === 'laser-treatments' ? laserProfiles[treatment] : null
 
   return (
     <main className={`${playfairDisplay.className} min-h-screen overflow-x-hidden bg-white text-[#1A1A2E]`}>
@@ -131,6 +203,29 @@ export default async function SubTreatmentPage({ params }) {
         </div>
       </section>
       <section className="border-y border-[#EEF0F4] bg-white py-5"><div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-[#EEF0F4] px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:px-8">{[[Search, 'Thorough assessment', 'We identify the cause.'], [ClipboardCheck, 'Clear treatment plan', 'Know your next steps.'], [ShieldCheck, 'Clinically guided care', 'Safe, suitable options.']].map(([Icon, heading, copy]) => <div key={heading} className="flex items-center gap-3 py-3 sm:justify-center"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFF0F6] text-[#D4146A]"><Icon className="h-4.5 w-4.5" /></span><div><p className="text-sm font-bold">{heading}</p><p className="text-xs text-[#5A5A72]">{copy}</p></div></div>)}</div></section>
+      {laserProfile && (
+        <section className="bg-white py-16 lg:py-20">
+          <div className="mx-auto max-w-6xl px-5 lg:px-8">
+            <div className="max-w-2xl">
+              <p className="text-sm font-bold uppercase tracking-widest text-[#D4146A]">Laser profile</p>
+              <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">Quick guide before you book</h2>
+            </div>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {[
+                ['What it is', laserProfile.what],
+                ['Best for', laserProfile.best],
+                ['Client benefit', laserProfile.benefit],
+                ['Skin types', laserProfile.skin],
+              ].map(([label, copy]) => (
+                <div key={label} className="rounded-2xl border border-[#EEF0F4] bg-[#FAFBFD] p-6">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#D4146A]">{label}</p>
+                  <p className="mt-3 text-sm leading-7 text-[#5A5A72]">{copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <section className="bg-[#FAFBFD] py-16 lg:py-20"><div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:px-8"><div><p className="text-sm font-bold uppercase tracking-widest text-[#D4146A]">About this treatment</p><h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">Care built around your concern</h2><p className="mt-6 max-w-2xl text-base leading-8 text-[#5A5A72]">{about}</p><Link href="/book-appointment" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#D4146A] hover:underline">Talk to our specialist <ArrowLeft className="h-4 w-4 rotate-180" /></Link></div><div className="rounded-2xl bg-white p-7 shadow-lg shadow-[#1A1A2E]/5 ring-1 ring-[#EEF0F4]"><p className="text-xs font-bold uppercase tracking-widest text-[#D4146A]">Concerns we address</p><h2 className="mt-2 text-2xl font-bold">This may help with</h2><ul className="mt-6 space-y-4">{concerns.map((concern) => <li key={concern} className="flex items-start gap-3 text-sm leading-6 text-[#5A5A72]"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FFF0F6]"><CheckCircle2 className="h-3.5 w-3.5 text-[#D4146A]" /></span>{concern}</li>)}</ul></div></div></section>
       <section className="bg-[#FAFBFD] py-16 lg:py-20"><div className="mx-auto max-w-6xl px-5 lg:px-8"><div className="text-center"><p className="text-sm font-bold uppercase tracking-widest text-[#D4146A]">The treatment journey</p><h2 className="mt-3 text-3xl font-bold md:text-4xl">Simple, considered care from start to finish.</h2><p className="mx-auto mt-4 max-w-2xl leading-relaxed text-[#5A5A72]">Every step is explained clearly, so you can make informed decisions about your treatment.</p></div><div className="relative mx-auto mt-12 max-w-5xl"><div className="absolute left-[16%] right-[16%] top-7 hidden border-t-2 border-dashed border-[#F2B6D1] md:block" /><div className="grid gap-6 md:grid-cols-3">{[[Stethoscope, '01', 'Consultation', approach[0]], [ShieldCheck, '02', 'Your treatment plan', approach[1]], [HeartHandshake, '03', 'Aftercare & review', approach[2]]].map(([Icon, number, heading, copy]) => <div key={heading} className="relative text-center"><div className="relative z-10 mx-auto flex h-14 w-14 items-center justify-center rounded-full border-4 border-[#FAFBFD] bg-[#D4146A] text-sm font-extrabold text-white shadow-lg shadow-[#D4146A]/25">{number}</div><div className="mt-5 rounded-2xl bg-white px-6 py-6 shadow-sm ring-1 ring-[#EEF0F4]"><div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0F6] text-[#D4146A]"><Icon className="h-5 w-5" /></div><h3 className="mt-4 text-lg font-bold">{heading}</h3><p className="mt-2 text-sm leading-6 text-[#5A5A72]">{copy}</p></div></div>)}</div></div></div></section>
       <section className="bg-white px-5 py-14 lg:px-8 lg:py-16"><div className="mx-auto grid max-w-6xl gap-7 rounded-3xl bg-gradient-to-br from-[#D4146A] to-[#A20C50] p-8 text-white shadow-xl shadow-[#D4146A]/15 md:grid-cols-[1fr_auto] md:items-center md:p-12"><div><p className="text-sm font-bold uppercase tracking-widest text-white/70">Ready when you are</p><h2 className="mt-3 text-3xl font-bold">Discuss your {title.toLowerCase()} concerns.</h2><p className="mt-3 max-w-xl leading-relaxed text-white/85">Book a private consultation with our dermatologist to understand the most suitable next step.</p></div><Link href="/book-appointment" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[#D4146A] transition hover:bg-[#FFF3F8]"><CalendarDays className="h-4 w-4" /> Book Appointment</Link></div></section>

@@ -93,12 +93,16 @@ const treatmentCategories = [
   {
     id: 'laser-treatments',
     title: 'Laser Treatments',
-    desc: 'Advanced laser procedures for skin rejuvenation and hair reduction.',
+    desc: 'Concern-led laser care for hair reduction, scars, pigmentation, lifting and glow.',
     href: '/treatments/laser-treatments',
     image: '/images/treatments/laser-treatments.jpg',
     features: [
-      'Laser Hair Removal',
-      'Laser Resurfacing',
+      'Diode Laser Hair Removal',
+      'Q-Switch Laser',
+      'MNRF',
+      'CO2 & Fractional Laser',
+      'Dermapen & HIFU',
+      'Carbon Laser Peel',
     ],
   },
 
