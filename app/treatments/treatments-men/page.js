@@ -31,6 +31,7 @@ import {
 import { FaWhatsapp } from 'react-icons/fa'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
+import CategoryFaqSection from '@/app/components/CategoryFaqSection'
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 
@@ -351,7 +352,7 @@ export default function MenTreatmentsPage() {
           </motion.div>
 
           <motion.div
-            className="flex flex-wrap gap-2.5"
+            className="flex flex-nowrap gap-2.5 overflow-x-auto pb-2"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -361,7 +362,7 @@ export default function MenTreatmentsPage() {
               <motion.span
                 key={index}
                 variants={staggerItem}
-                className="rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]"
+                className="shrink-0 rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]"
               >
                 {condition}
               </motion.span>
@@ -543,6 +544,7 @@ export default function MenTreatmentsPage() {
         </div>
       </section>
 
+      <CategoryFaqSection category="men" />
       <Footer />
 
       {/* Mobile Sticky CTA */}

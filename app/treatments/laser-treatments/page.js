@@ -354,8 +354,8 @@ export default function LaserTreatmentsPage() {
             <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Concerns We Treat</p>
             <h2 className="mt-2 text-2xl font-bold text-[#1A1A2E] md:text-3xl">Recognise Your Concern?</h2>
           </motion.div>
-          <motion.div className="flex flex-wrap gap-2.5" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
-            {concerns.map((concern) => <motion.span key={concern} variants={staggerItem} className="rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]">{concern}</motion.span>)}
+          <motion.div className="flex flex-nowrap gap-2.5 overflow-x-auto pb-2" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
+            {concerns.map((concern) => <motion.span key={concern} variants={staggerItem} className="shrink-0 rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]">{concern}</motion.span>)}
           </motion.div>
         </div>
       </section>

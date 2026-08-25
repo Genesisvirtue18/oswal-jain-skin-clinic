@@ -24,7 +24,7 @@ const treatmentCategories = [
   { title: 'Hair Treatments', href: '/treatments/hair-treatments' },
   { title: 'Skin Conditions', href: '/treatments/skin-conditions' },
   { title: 'Laser Treatments', href: '/treatments/laser-treatments' },
-  { title: 'Treatments for Men', href: '/treatments/men' },
+  { title: 'Treatments for Men', href: '/treatments/treatments-men' },
   { title: 'Sexual Wellness', href: '/treatments/sexual-wellness' },
 ]
 

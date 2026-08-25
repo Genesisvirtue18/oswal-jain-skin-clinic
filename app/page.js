@@ -68,7 +68,7 @@ const treatmentCategories = [
     title: 'Treatments for Men',
     desc: 'Skin, hair, beard, grooming and anti-ageing care for men.',
     icon: UserRound,
-    href: '/treatments/men',
+    href: '/treatments/treatments-men',
     image: '/images/treatments/treatments-men.jpg',
   },
   {

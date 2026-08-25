@@ -17,8 +17,8 @@ const neoSans = localFont({
   src: [
     { path: '../public/fonts/neo-sans-std/Neo Sans Std Regular.otf', weight: '400', style: 'normal' },
     { path: '../public/fonts/neo-sans-std/Neo Sans Std Medium.otf', weight: '500', style: 'normal' },
-    { path: '../public/fonts/neo-sans-std/Neo Sans Std Bold.otf', weight: '700', style: 'normal' },
-    { path: '../public/fonts/neo-sans-std/Neo Sans Std Black.otf', weight: '900', style: 'normal' },
+    { path: '../public/fonts/neo-sans-std/Neo Sans Std Medium.otf', weight: '600 700', style: 'normal' },
+    { path: '../public/fonts/neo-sans-std/Neo Sans Std Bold.otf', weight: '800 900', style: 'normal' },
   ],
   variable: '--font-neo-sans',
   display: 'swap',

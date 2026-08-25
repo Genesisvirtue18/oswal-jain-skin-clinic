@@ -25,6 +25,7 @@ import {
 import { FaWhatsapp } from 'react-icons/fa'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
+import CategoryFaqSection from '@/app/components/CategoryFaqSection'
 const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -586,6 +587,7 @@ export default function TreatmentsPage() {
         </div>
       </section>
 
+      <CategoryFaqSection category="treatments" />
       <Footer />
 
       {/* Mobile Sticky CTA */}

@@ -25,6 +25,7 @@ import {
 import { FaWhatsapp } from 'react-icons/fa'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
+import CategoryFaqSection from '@/app/components/CategoryFaqSection'
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 
@@ -274,8 +275,8 @@ export default function SkinConditionsPage() {
             <p className="text-sm font-medium uppercase tracking-wider text-[#D4146A]">Concerns We Treat</p>
             <h2 className="mt-2 text-2xl font-bold text-[#1A1A2E] md:text-3xl">Recognise Your Concern?</h2>
           </motion.div>
-          <motion.div className="flex flex-wrap gap-2.5" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
-            {concerns.map((concern) => <motion.span key={concern} variants={staggerItem} className="rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]">{concern}</motion.span>)}
+          <motion.div className="flex flex-nowrap gap-2.5 overflow-x-auto pb-2" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
+            {concerns.map((concern) => <motion.span key={concern} variants={staggerItem} className="shrink-0 rounded-full border border-[#F0F2F5] bg-[#FAFBFD] px-4 py-2 text-sm font-medium text-[#1A1A2E] transition hover:border-[#D4146A]/30 hover:bg-[#FFF5F8] hover:text-[#D4146A]">{concern}</motion.span>)}
           </motion.div>
         </div>
       </section>
@@ -358,6 +359,7 @@ export default function SkinConditionsPage() {
         </div>
       </section>
 
+      <CategoryFaqSection category="skin" />
       <Footer />
 
       <motion.div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-[#F0F2F5] bg-white/95 p-3 shadow-lg backdrop-blur-sm lg:hidden" initial={{ y: 100 }} animate={{ y: 0 }} transition={{ delay: 0.5, duration: 0.4 }}>
