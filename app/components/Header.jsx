@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, CalendarDays, ChevronDown } from 'lucide-react'
+import { Menu, X, CalendarDays, ChevronDown, Phone } from 'lucide-react'
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
 const navItems = [
@@ -174,6 +174,13 @@ export default function Header() {
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#F0F2F5] text-[#25D366] transition hover:border-[#25D366] hover:bg-[#25D366]/5"
             >
               <FaWhatsapp className="h-4 w-4" />
+            </a>
+            <a
+              href="tel:+919417237526"
+              className="inline-flex items-center gap-2 rounded-lg border border-[#D4146A]/25 bg-[#FFF5F8] px-3 py-2 text-sm font-semibold text-[#D4146A] transition hover:border-[#D4146A] hover:bg-[#D4146A] hover:text-white"
+            >
+              <Phone className="h-4 w-4" />
+              Call Us
             </a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link

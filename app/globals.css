@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-playfair);
+  --font-sans: var(--font-neo-sans);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -22,5 +22,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-neo-sans), var(--font-playfair), Georgia, serif;
+}
+
+/* Neo Sans Std is the site font; the previous Playfair font remains the fallback. */
+body * {
+  font-family: var(--font-neo-sans), var(--font-playfair), Georgia, serif !important;
 }

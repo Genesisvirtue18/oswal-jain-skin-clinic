@@ -80,14 +80,14 @@ const treatmentCategories = [
 ]
 
 const popularTreatments = [
-  { title: 'Acne & Scar Treatment', href: '/treatments/acne-and-scars' },
-  { title: 'Pigmentation Treatment', href: '/treatments/skin-lightening-and-pigmentation' },
-  { title: 'Laser Hair Removal', href: '/treatments/laser-hair-removal' },
-  { title: 'Chemical Peels', href: '/treatments/chemical-peels' },
-  { title: 'Anti-ageing Treatment', href: '/treatments/anti-ageing' },
-  { title: 'Hair Loss Treatment', href: '/treatments/hair-loss' },
-  { title: 'Growth Factor Therapy', href: '/treatments/growth-factor-therapy-for-hair' },
-  { title: 'Dandruff Treatment', href: '/treatments/dandruff' },
+  { title: 'Acne & Scar Treatment', href: '/treatments/face-treatments/acne' },
+  { title: 'Pigmentation Treatment', href: '/treatments/face-treatments/skin-lightening-and-pigmentation' },
+  { title: 'Laser Hair Removal', href: '/treatments/laser-treatments/laser-hair-removal' },
+  { title: 'Chemical Peels', href: '/treatments/face-treatments/chemical-peels' },
+  { title: 'Anti-ageing Treatment', href: '/treatments/face-treatments/anti-ageing' },
+  { title: 'Hair Loss Treatment', href: '/treatments/hair-treatments/hairloss' },
+  { title: 'Growth Factor Therapy', href: '/treatments/hair-treatments/Growththerapy' },
+  { title: 'Dandruff Treatment', href: '/treatments/hair-treatments/Dandruff' },
 ]
 
 const stats = [

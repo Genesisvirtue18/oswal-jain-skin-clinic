@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Playfair_Display } from 'next/font/google'
-import { ArrowLeft, CalendarDays, CheckCircle2, ClipboardCheck, HeartHandshake, Phone, Search, ShieldCheck, Sparkles, Stethoscope } from 'lucide-react'
+import { ArrowLeft, CalendarDays, CheckCircle2, ChevronDown, ClipboardCheck, HeartHandshake, Phone, Search, ShieldCheck, Sparkles, Stethoscope } from 'lucide-react'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 
@@ -161,6 +161,46 @@ const laserProfiles = {
   },
 }
 
+function getTreatmentFaqs({ category, title, concerns, approach }) {
+  if (category === 'skin-conditions') {
+    return [
+      { question: `How is ${title.toLowerCase()} diagnosed?`, answer: `The dermatologist examines your skin, reviews your symptoms and medical history, and considers other conditions that can look similar. Tests may be advised only when they are clinically useful.` },
+      { question: 'What can trigger or worsen this condition?', answer: `Triggers vary from person to person. Irritation, weather, infections, products, stress or other health factors may contribute, depending on the condition. Your consultation includes a review of likely triggers.` },
+      { question: 'How long will treatment take?', answer: `Treatment duration depends on the diagnosis, severity and response to care. Some concerns settle with short-term treatment, while recurring conditions need maintenance and follow-up.` },
+      { question: 'What should I do at home?', answer: `Follow the prescribed treatment and skin-care routine, avoid known triggers, and do not use steroid or combination creams without medical advice. ${approach[2]} will be explained during your visit.` },
+      { question: 'When should I return for a review?', answer: `Your dermatologist will recommend a review based on the severity of your symptoms and the treatment prescribed. Seek earlier advice if the condition spreads, becomes painful or changes unexpectedly.` },
+    ]
+  }
+
+  if (category === 'hair-treatments') {
+    return [
+      { question: `Is ${title.toLowerCase()} suitable for me?`, answer: `Suitability depends on the cause and stage of your concern, scalp health and medical history. A scalp and hair assessment is required before a treatment plan is recommended.` },
+      { question: 'When can I expect to notice improvement?', answer: `Hair growth and scalp improvement are gradual. The timeline varies with the diagnosis, treatment selected and consistency of care, so progress is assessed over planned review visits.` },
+      { question: 'Will I need more than one session?', answer: `Some treatments require a planned series, while medical scalp conditions may need ongoing home care and reviews. Your dermatologist will explain the expected schedule after assessment.` },
+      { question: 'Can I continue my normal hair-care routine?', answer: `Usually, but certain oils, colours, styling products or active scalp treatments may need to be paused. You will receive instructions suited to your scalp and procedure.` },
+      { question: 'How will my progress be monitored?', answer: `${approach[2]} may include clinical review, comparison photographs or changes to your care plan based on shedding, density and scalp health.` },
+    ]
+  }
+
+  if (category === 'laser-treatments') {
+    return [
+      { question: `Is ${title} suitable for my concern and skin tone?`, answer: `Suitability depends on your concern, skin tone, recent tanning, sensitivity and treatment history. The dermatologist selects the technology and settings after examining your skin, and may advise a patch test.` },
+      { question: 'How many sessions will I need?', answer: `The number and spacing of sessions depend on the treatment area, severity and your response. Most laser and energy-based treatments work gradually, so your expected plan is discussed after assessment.` },
+      { question: 'What will the treatment feel like?', answer: `Sensation varies by device and treatment depth. You may feel warmth, tingling or brief snapping sensations. Cooling or numbing cream may be used when appropriate.` },
+      { question: 'What precautions should I take before treatment?', answer: `Avoid tanning, excessive sun exposure and irritating skin products as advised. Tell your dermatologist about medicines, active infections and recent procedures before treatment.` },
+      { question: 'What should I expect after treatment?', answer: `Temporary redness, warmth or sensitivity may occur. Recovery varies by procedure, and you will receive specific guidance for cleansing, moisturising, sun protection and restarting active skincare.` },
+    ]
+  }
+
+  return [
+    { question: `Is ${title.toLowerCase()} suitable for my concern?`, answer: `Suitability depends on your skin, the cause and severity of ${concerns[0].toLowerCase()}, your medical history and treatment goals. The dermatologist will assess these before recommending care.` },
+    { question: 'How many sessions or visits will I need?', answer: `The number of visits varies with the treatment selected and how your skin responds. Your expected plan and review schedule will be explained after consultation.` },
+    { question: 'Will I need to change my skincare routine?', answer: `Possibly. Some active ingredients or irritating products may need to be paused before or after treatment. Your dermatologist will tell you what to continue and when to restart products.` },
+    { question: 'Is there any recovery time?', answer: `Recovery depends on the procedure. Some options cause little interruption to your routine, while others may cause temporary redness, peeling or sensitivity. This is discussed before treatment.` },
+    { question: 'How can I maintain my results?', answer: `${approach[2]}, consistent home care and daily sun protection where relevant can help support and maintain your results.` },
+  ]
+}
+
 export function generateStaticParams() {
   return Object.entries(treatments).flatMap(([category, group]) =>
     Object.keys(group.items).map((treatment) => ({ category, treatment }))
@@ -181,6 +221,7 @@ export default async function SubTreatmentPage({ params }) {
     ['Clinical consultation', 'Personalised treatment discussion', 'Aftercare and follow-up guidance'],
   ]
   const laserProfile = category === 'laser-treatments' ? laserProfiles[treatment] : null
+  const faqs = getTreatmentFaqs({ category, title, concerns, approach })
 
   return (
     <main className={`${playfairDisplay.className} min-h-screen overflow-x-hidden bg-white text-[#1A1A2E]`}>
@@ -228,6 +269,7 @@ export default async function SubTreatmentPage({ params }) {
       )}
       <section className="bg-[#FAFBFD] py-16 lg:py-20"><div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:px-8"><div><p className="text-sm font-bold uppercase tracking-widest text-[#D4146A]">About this treatment</p><h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">Care built around your concern</h2><p className="mt-6 max-w-2xl text-base leading-8 text-[#5A5A72]">{about}</p><Link href="/book-appointment" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#D4146A] hover:underline">Talk to our specialist <ArrowLeft className="h-4 w-4 rotate-180" /></Link></div><div className="rounded-2xl bg-white p-7 shadow-lg shadow-[#1A1A2E]/5 ring-1 ring-[#EEF0F4]"><p className="text-xs font-bold uppercase tracking-widest text-[#D4146A]">Concerns we address</p><h2 className="mt-2 text-2xl font-bold">This may help with</h2><ul className="mt-6 space-y-4">{concerns.map((concern) => <li key={concern} className="flex items-start gap-3 text-sm leading-6 text-[#5A5A72]"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FFF0F6]"><CheckCircle2 className="h-3.5 w-3.5 text-[#D4146A]" /></span>{concern}</li>)}</ul></div></div></section>
       <section className="bg-[#FAFBFD] py-16 lg:py-20"><div className="mx-auto max-w-6xl px-5 lg:px-8"><div className="text-center"><p className="text-sm font-bold uppercase tracking-widest text-[#D4146A]">The treatment journey</p><h2 className="mt-3 text-3xl font-bold md:text-4xl">Simple, considered care from start to finish.</h2><p className="mx-auto mt-4 max-w-2xl leading-relaxed text-[#5A5A72]">Every step is explained clearly, so you can make informed decisions about your treatment.</p></div><div className="relative mx-auto mt-12 max-w-5xl"><div className="absolute left-[16%] right-[16%] top-7 hidden border-t-2 border-dashed border-[#F2B6D1] md:block" /><div className="grid gap-6 md:grid-cols-3">{[[Stethoscope, '01', 'Consultation', approach[0]], [ShieldCheck, '02', 'Your treatment plan', approach[1]], [HeartHandshake, '03', 'Aftercare & review', approach[2]]].map(([Icon, number, heading, copy]) => <div key={heading} className="relative text-center"><div className="relative z-10 mx-auto flex h-14 w-14 items-center justify-center rounded-full border-4 border-[#FAFBFD] bg-[#D4146A] text-sm font-extrabold text-white shadow-lg shadow-[#D4146A]/25">{number}</div><div className="mt-5 rounded-2xl bg-white px-6 py-6 shadow-sm ring-1 ring-[#EEF0F4]"><div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0F6] text-[#D4146A]"><Icon className="h-5 w-5" /></div><h3 className="mt-4 text-lg font-bold">{heading}</h3><p className="mt-2 text-sm leading-6 text-[#5A5A72]">{copy}</p></div></div>)}</div></div></div></section>
+      <section className="bg-white py-16 lg:py-20"><div className="mx-auto max-w-4xl px-5 lg:px-8"><div className="text-center"><p className="text-sm font-bold uppercase tracking-widest text-[#D4146A]">Frequently asked questions</p><h2 className="mt-3 text-3xl font-bold md:text-4xl">Questions about {title.toLowerCase()}</h2><p className="mx-auto mt-4 max-w-2xl leading-relaxed text-[#5A5A72]">Helpful guidance before your consultation and treatment plan.</p></div><div className="mt-10 space-y-3">{faqs.map((faq) => <details key={faq.question} className="group overflow-hidden rounded-2xl border border-[#E8EAF0] bg-[#FAFBFD] open:border-[#D4146A]/25 open:bg-white open:shadow-sm"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-5 font-bold marker:content-none md:px-6"><span>{faq.question}</span><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FFF0F6] text-[#D4146A]"><ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" /></span></summary><p className="border-t border-[#EEF0F4] px-5 py-5 text-sm leading-7 text-[#5A5A72] md:px-6">{faq.answer}</p></details>)}</div></div></section>
       <section className="bg-white px-5 py-14 lg:px-8 lg:py-16"><div className="mx-auto grid max-w-6xl gap-7 rounded-3xl bg-gradient-to-br from-[#D4146A] to-[#A20C50] p-8 text-white shadow-xl shadow-[#D4146A]/15 md:grid-cols-[1fr_auto] md:items-center md:p-12"><div><p className="text-sm font-bold uppercase tracking-widest text-white/70">Ready when you are</p><h2 className="mt-3 text-3xl font-bold">Discuss your {title.toLowerCase()} concerns.</h2><p className="mt-3 max-w-xl leading-relaxed text-white/85">Book a private consultation with our dermatologist to understand the most suitable next step.</p></div><Link href="/book-appointment" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[#D4146A] transition hover:bg-[#FFF3F8]"><CalendarDays className="h-4 w-4" /> Book Appointment</Link></div></section>
       <Footer />
     </main>
