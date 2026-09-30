@@ -29,8 +29,7 @@ const navItems = [
   { label: 'Contact', href: '/contact' },
 ]
 
-const LOGO_IMAGE = '/images/logo_oswal_jain.png'
-const LOGO_FALLBACK = 'https://www.oswaljainskinclinic.com/image/image/logoff.jpeg'
+const LOGO_IMAGE = '/images/logo_oswal_jain-header.webp'
 
 function Logo() {
   return (
@@ -38,10 +37,9 @@ function Logo() {
       <img
         src={LOGO_IMAGE}
         alt="Oswal Jain Skin & Hair Clinic"
+        width={400}
+        height={229}
         className="h-14 w-auto object-contain md:h-16"
-        onError={(e) => {
-          e.currentTarget.src = LOGO_FALLBACK
-        }}
       />
     </Link>
   )

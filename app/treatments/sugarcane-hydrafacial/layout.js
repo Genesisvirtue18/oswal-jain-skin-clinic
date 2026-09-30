@@ -1,6 +1,6 @@
 import { localMetadata } from '@/app/seo'
 
-export const metadata = localMetadata({
+export const metadata = localMetadata({ path: '/treatments/sugarcane-hydrafacial/',
   title: 'Sugarcane Hydrafacial Treatment',
   description: 'Gentle exfoliating and hydrating facial care for dull and congested-looking skin',
   keywords: ['hydrafacial', 'face treatment near me', 'skin clinic'],

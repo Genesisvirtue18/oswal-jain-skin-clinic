@@ -28,8 +28,7 @@ const treatmentCategories = [
   { title: 'Sexual Wellness', href: '/treatments/sexual-wellness' },
 ]
 
-const LOGO_IMAGE = '/images/logo_oswal_jain.png'
-const LOGO_FALLBACK = 'https://www.oswaljainskinclinic.com/image/image/logoff.jpeg'
+const LOGO_IMAGE = '/images/logo_oswal_jain-header.webp'
 
 function Logo() {
   return (
@@ -37,10 +36,9 @@ function Logo() {
       <img
         src={LOGO_IMAGE}
         alt="Oswal Jain Skin & Hair Clinic"
+        width={400}
+        height={229}
         className="h-14 w-auto object-contain md:h-16"
-        onError={(e) => {
-          e.currentTarget.src = LOGO_FALLBACK
-        }}
       />
     </Link>
   )
@@ -71,7 +69,7 @@ export default function Footer() {
               <motion.a href="https://www.instagram.com/oswaljain_dermaclinic?igsi=MXAwNnNrZHc4cGJvcQ==" target="_blank" rel="noreferrer" aria-label="Visit us on Instagram" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-[#D4146A]">
                 <FaInstagram className="h-3.5 w-3.5" />
               </motion.a>
-              <motion.button onClick={whatsappNow} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-green-600">
+              <motion.button onClick={whatsappNow} aria-label="Chat with us on WhatsApp" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/80 transition hover:bg-white hover:text-green-600">
                 <FaWhatsapp className="h-3.5 w-3.5" />
               </motion.button>
             </div>
@@ -79,7 +77,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="mb-4 font-bold text-sm">Quick Links</h4>
+            <h2 className="mb-4 font-bold text-sm">Quick Links</h2>
             <div className="space-y-2">
               {navItems.map((item) => (
                 <Link key={item.label} href={item.href} className="block text-sm text-white/70 transition hover:text-white">
@@ -91,7 +89,7 @@ export default function Footer() {
 
           {/* Our Services - All 6 Categories */}
           <div>
-            <h4 className="mb-4 font-bold text-sm">Our Services</h4>
+            <h2 className="mb-4 font-bold text-sm">Our Services</h2>
             <div className="space-y-2">
               {treatmentCategories.map((item) => (
                 <Link
@@ -107,7 +105,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="mb-4 font-bold text-sm">Contact Info</h4>
+            <h2 className="mb-4 font-bold text-sm">Contact Info</h2>
             <div className="space-y-3 text-sm text-white/70">
               <div className="flex gap-3">
                 <MapPinned className="h-4 w-4 shrink-0 text-[#FF5AA1] mt-0.5" />

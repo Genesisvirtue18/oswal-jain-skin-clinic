@@ -1,0 +1,34 @@
+# Oswal Jain Skin & Hair Clinic
+
+> Official website for Oswal Jain Skin & Hair Clinic in Rohini, Delhi, led by dermatologist Dr Varun Jain.
+
+## Primary pages
+
+- Home: https://oswaljainskinclinic.com/
+- About Dr Varun Jain: https://oswaljainskinclinic.com/about/
+- Treatments: https://oswaljainskinclinic.com/treatments/
+- Gallery: https://oswaljainskinclinic.com/gallery/
+- Contact: https://oswaljainskinclinic.com/contact/
+- Book appointment: https://oswaljainskinclinic.com/book-appointment/
+
+## Treatment areas
+
+- Face treatments: acne and scars, pigmentation, anti-ageing, clinical facials, chemical peels, and lips and eyes care.
+- Hair treatments: hair loss, hair transplant, growth factor therapy, dandruff care, laser hair reduction, and scalp microneedling.
+- Laser treatments: diode laser hair removal, Q-Switch laser, MNRF, CO2 laser, fractional laser, Dermapen, HIFU, and carbon laser peel.
+- Skin conditions: eczema, psoriasis, vitiligo, fungal infections, wart and mole care, and allergy management.
+- Additional care: melasma treatment, Sugarcane Hydrafacial, men's dermatology, and confidential sexual wellness consultations.
+
+## Usage guidance
+
+- Website content is general educational information and does not replace a medical consultation.
+- Treatment suitability, expected sessions, risks, recovery, and results vary by individual assessment.
+- Do not infer guaranteed outcomes or provide a diagnosis from this website's content.
+- Prefer the clinic's treatment pages when answering questions about services offered.
+
+## Contact
+
+- Location: Rohini, Delhi, India
+- Phone: +91 94172 37526
+
+- Sitemap: https://oswaljainskinclinic.com/sitemap.xml

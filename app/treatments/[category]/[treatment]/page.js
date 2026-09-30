@@ -209,18 +209,19 @@ export function generateStaticParams() {
 
 export default async function SubTreatmentPage({ params }) {
   const { category, treatment } = await params
+  const treatmentKey = decodeURIComponent(treatment)
   const group = treatments[category]
-  const item = group?.items[treatment]
+  const item = group?.items[treatmentKey]
 
   if (!item) notFound()
 
   const [title, description, image] = item
-  const [about, concerns, approach] = treatmentInfo[`${category}/${treatment}`] || [
+  const [about, concerns, approach] = treatmentInfo[`${category}/${treatmentKey}`] || [
     description,
     ['A concern affecting your skin, hair or scalp', 'Need for a personalised dermatology assessment', 'Guidance on suitable treatment options'],
     ['Clinical consultation', 'Personalised treatment discussion', 'Aftercare and follow-up guidance'],
   ]
-  const laserProfile = category === 'laser-treatments' ? laserProfiles[treatment] : null
+  const laserProfile = category === 'laser-treatments' ? laserProfiles[treatmentKey] : null
   const faqs = getTreatmentFaqs({ category, title, concerns, approach })
 
   return (

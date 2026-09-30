@@ -1,7 +1,7 @@
 import { Geist_Mono, Playfair_Display } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
-import { routeSeo } from '@/app/seo'
+import { routeSeo, clinicSchema } from '@/app/seo'
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -31,7 +31,13 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${neoSans.variable} ${playfairDisplay.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema).replace(/</g, '\\u003c') }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

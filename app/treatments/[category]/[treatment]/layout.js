@@ -15,10 +15,29 @@ const keywords = {
   'Wart&MoleCare': ['wart removal', 'mole removal', 'skin specialist near me'],
 }
 
+const seoTitles = {
+  acne: 'Acne Treatment in Rohini',
+  'skin-lightening-and-pigmentation': 'Pigmentation Treatment in Rohini',
+  Eczema: 'Eczema Treatment in Rohini',
+  Vitiligo: 'Vitiligo Treatment in Rohini',
+  Psoriasis: 'Psoriasis Treatment in Rohini',
+  mnrf: 'MNRF Treatment in Rohini',
+  'co2-laser': 'CO2 Laser Treatment in Rohini',
+  dermapen: 'Dermapen Treatment in Rohini',
+  hifu: 'HIFU Treatment in Rohini',
+  hairloss: 'Hair Loss Treatment in Rohini',
+  'hair-loss': 'Hair Loss Treatment in Rohini',
+  'dark-lips': 'Dark Lips Treatment in Rohini',
+  Dandruff: 'Dandruff Treatment in Rohini',
+  'Wart&MoleCare': 'Wart and Mole Care in Rohini',
+}
+
 export async function generateMetadata({ params }) {
-  const { treatment } = await params
-  const title = decodeURIComponent(treatment).replace(/[-_]/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
-  return localMetadata({ title, description: `Dermatologist consultation and personalised care for ${title.toLowerCase()}`, keywords: keywords[treatment] || [title, 'skin treatment near me', 'dermatologist'] })
+  const { category, treatment } = await params
+  const treatmentKey = decodeURIComponent(treatment)
+  const treatmentName = treatmentKey.replace(/[-_]/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
+  const title = seoTitles[treatmentKey] || `${treatmentName} Treatment in Rohini`
+  return localMetadata({ path: `/treatments/${encodeURIComponent(category)}/${encodeURIComponent(treatmentKey)}/`, title, description: `Dermatologist consultation and personalised care for ${treatmentName.toLowerCase()}`, keywords: keywords[treatmentKey] || [treatmentName, 'skin treatment near me', 'dermatologist'] })
 }
 
 export default function Layout({ children }) { return children }

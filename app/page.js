@@ -44,38 +44,38 @@ const treatmentCategories = [
     title: 'Face Treatments',
     desc: 'Acne, pigmentation, scars, dullness and skin rejuvenation care.',
     href: '/treatments/face-treatments',
-    image: '/images/treatments/face-treatments.jpg',
+    image: '/images/treatments/face-treatments.webp',
   },
   {
     title: 'Hair Treatments',
     desc: 'Hair fall, dandruff, PRP, scalp and hair growth-focused care.',
     href: '/treatments/hair-treatments',
-    image: '/images/treatments/hair-treatments.jpg',
+    image: '/images/treatments/hair-treatments.webp',
   },
   {
     title: 'Skin Conditions',
     desc: 'Diagnosis-led care for eczema, allergies, infections and more.',
     href: '/treatments/skin-conditions',
-    image: '/images/treatments/skin-conditions.jpg',
+    image: '/images/treatments/skin-conditions.webp',
   },
   {
     title: 'Laser Treatments',
     desc: 'Laser hair reduction, Q-switch, resurfacing and scar procedures.',
     href: '/treatments/laser-treatments',
-    image: '/images/treatments/laser-treatments.jpg',
+    image: '/images/treatments/laser-treatments.webp',
   },
   {
     title: 'Treatments for Men',
     desc: 'Skin, hair, beard, grooming and anti-ageing care for men.',
     icon: UserRound,
     href: '/treatments/treatments-men',
-    image: '/images/treatments/treatments-men.jpg',
+    image: '/images/treatments/treatments-men.webp',
   },
   {
     title: 'Sexual Wellness',
     desc: 'Confidential consultation for intimate and wellness concerns.',
     href: '/treatments/sexual-wellness',
-    image: '/images/treatments/sexual-wellness.jpg',
+    image: '/images/treatments/sexual-wellness.webp',
   },
 ]
 
@@ -110,64 +110,33 @@ const testimonials = [
   { name: 'nupur sehra', text: 'Best experience here.. my mother is suffering fron severe allergy.. but all because of dr varun jain,she is much better from earlier.' },
 ]
 
-const oldBlogStories = [
-  {
-    category: 'Cryotherapy Wart Treatment',
-    title: 'Mole or Wart? How to Know When It’s Time to Get It Examined and Removed',
-    excerpt: 'Unsure whether that skin growth is a mole or a wart? Learn about removal options, warning signs and when to seek professional advice.',
-    date: 'July 12, 2026',
-    image: '/images/blogs/mole-or-wart.png',
-    href: 'https://oswaljainskinclinic.com/blogs/',
-  },
-  {
-    category: 'Allergic Skin Reaction',
-    title: 'Skin Allergy Symptoms You Should Never Ignore and When to Visit a Dermatologist',
-    excerpt: 'Discover symptoms you should never ignore and learn when professional skin-allergy treatment is the right next step.',
-    date: 'July 8, 2026',
-    image: '/images/treatments/skin-conditions.jpg',
-    href: 'https://oswaljainskinclinic.com/blogs/',
-  },
-  {
-    category: 'Androgenetic Alopecia Treatment',
-    title: 'PRP Hair Treatment Explained: Who Can Benefit and What Results Can You Expect?',
-    excerpt: 'Learn who can benefit from PRP hair treatment, how the procedure works and what results to expect from clinically backed care.',
-    date: 'July 5, 2026',
-    image: '/images/treatments/hair-treatments.jpg',
-    href: 'https://oswaljainskinclinic.com/blogs/',
-  },
-]
+const BLOG_API_URL = '/blogs/wp-json/wp/v2/posts?per_page=3&_embed'
 
-void oldBlogStories
+function decodeHtml(value = '') {
+  const textarea = document.createElement('textarea')
+  textarea.innerHTML = value
+  return textarea.value
+}
 
-const blogStories = [
-  {
-    category: 'Face Treatments',
-    title: 'Best Skin Rejuvenation Treatment in Rohini Delhi | Healthy Glowing Skin with Dr. Varun Jain',
-    excerpt: 'Healthy, glowing skin is something many people wish to achieve. Learn how professional skin rejuvenation can address the effects of sunlight, pollution, stress and ageing.',
-    date: 'August 7, 2026',
-    image: '/images/blogs/skin-rejuvenation-treatment-rohini.png',
-    imageAlt: 'Skin rejuvenation treatment in Rohini Delhi',
-    href: 'https://oswaljainskinclinic.com/blogs/skin-rejuvenation-treatment-rohini/',
-  },
-  {
-    category: 'Skin Treatments',
-    title: 'Open Pores Treatment in Rohini Delhi | Dermatologist-Recommended Solutions by Dr. Varun Jain',
-    excerpt: 'Visible open pores can make the skin look uneven. Explore dermatologist-recommended approaches to smoother, healthier-looking skin.',
-    date: 'August 4, 2026',
-    image: '/images/blogs/open-pores-treatment-rohini.png',
-    imageAlt: 'Open pores treatment in Rohini Delhi',
-    href: 'https://oswaljainskinclinic.com/blogs/open-pores-treatment-rohini-delhi/',
-  },
-  {
-    category: 'Hair Treatments',
-    title: 'Hair Regrowth Treatment in Rohini Delhi | Restore Healthy Hair with Dr. Varun Jain',
-    excerpt: 'Hair thinning can affect confidence. Discover expert guidance on restoring fuller, healthier hair with personalised treatment options.',
-    date: 'August 2, 2026',
-    image: '/images/blogs/hair-regrowth-treatment-rohini.png',
-    imageAlt: 'Hair regrowth treatment in Rohini Delhi',
-    href: 'https://oswaljainskinclinic.com/blogs/hair-regrowth-treatment-rohini-delhi/',
-  },
-]
+function latestBlogStories(posts) {
+  return posts.map((post) => {
+    const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0]
+    const imageSizes = featuredMedia?.media_details?.sizes || {}
+    const category = post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Clinic journal'
+    const excerpt = decodeHtml(post.excerpt?.rendered || '')
+      .replace(/<[^>]*>/g, '')
+      .trim()
+
+    return {
+      category,
+      title: decodeHtml(post.title?.rendered || ''),
+      excerpt,
+      image: imageSizes.medium_large?.source_url || imageSizes.large?.source_url || imageSizes.full?.source_url || featuredMedia?.source_url || '/images/clinic.jpg',
+      imageAlt: featuredMedia?.alt_text || decodeHtml(post.title?.rendered || ''),
+      href: post.link,
+    }
+  })
+}
 
 // Animation variants
 const fadeInUp = {
@@ -259,7 +228,7 @@ function AnimatedCounter({ target, suffix = '', duration = 2000 }) {
   )
 }
 
-function ImageCard({ src, alt, className = '' }) {
+function ImageCard({ src, alt, className = '', width, height, priority = false }) {
   const [failed, setFailed] = useState(false)
 
   if (failed) {
@@ -274,12 +243,34 @@ function ImageCard({ src, alt, className = '' }) {
   }
 
   return (
-    <img src={src} alt={alt} className={className} onError={() => setFailed(true)} draggable={false} />
+    <img src={src} alt={alt} width={width} height={height} fetchPriority={priority ? 'high' : undefined} loading={priority ? undefined : 'lazy'} className={className} onError={() => setFailed(true)} draggable={false} />
   )
 }
 
 export default function HomePage() {
+  const [blogStories, setBlogStories] = useState([])
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    async function loadLatestBlogs() {
+      try {
+        const response = await fetch(BLOG_API_URL, { signal: controller.signal })
+        if (!response.ok) throw new Error(`Blog API returned ${response.status}`)
+
+        const posts = await response.json()
+        if (Array.isArray(posts) && posts.length === 3) {
+          setBlogStories(latestBlogStories(posts))
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError') console.error('Unable to load latest blogs', error)
+      }
+    }
+
+    loadLatestBlogs()
+    return () => controller.abort()
+  }, [])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -417,6 +408,9 @@ export default function HomePage() {
                   <ImageCard
                     src={HERO_DOCTOR_IMAGE}
                     alt="Dr. Varun Jain"
+                    width={924}
+                    height={925}
+                    priority
                     className="h-[480px] w-full object-cover object-[center_20%] md:h-[520px]"
                   />
                 </motion.div>
@@ -483,6 +477,9 @@ export default function HomePage() {
                       <img
                         src={item.image}
                         alt={item.title}
+                        width={900}
+                        height={675}
+                        loading="lazy"
                         className="block h-auto w-full transition duration-500 group-hover:scale-[1.02]"
                       />
                     </div>
@@ -511,6 +508,8 @@ export default function HomePage() {
                 <ImageCard
                   src={HERO_DOCTOR_IMAGE}
                   alt="Dr. Varun Jain"
+                  width={924}
+                  height={925}
                   className="h-[440px] w-full object-cover object-[center_18%]"
                 />
               </div>
@@ -608,7 +607,7 @@ export default function HomePage() {
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
-            {['DcavYQCkx2D', 'DcORlpVk3A0', 'Db7oUx8CdMK', 'DcBIJmjD1a0'].map((reelId) => (
+            {['DcavYQCkx2D', 'DcORlpVk3A0', 'Db7oUx8CdMK', 'DdLZSpXCUEJ'].map((reelId) => (
               <motion.div key={reelId} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -4 }} className="relative overflow-hidden rounded-xl border border-[#F0F2F5] bg-black shadow-sm">
                 <div className="h-[370px] overflow-hidden">
                   <iframe
@@ -666,7 +665,7 @@ export default function HomePage() {
       </section>
 
       {/* Blog stories */}
-      <section className="bg-white py-16">
+      {blogStories.length === 3 && <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <ScrollReveal>
             <div className="mb-10">
@@ -687,7 +686,7 @@ export default function HomePage() {
               <motion.article key={story.title} variants={staggerItem} whileHover={prefersReducedMotion ? {} : { y: -5 }}>
                 <Link href={story.href} target="_blank" rel="noreferrer" className="group block h-full overflow-hidden rounded-2xl border border-[#F0F2F5] bg-white shadow-sm transition hover:shadow-lg">
                   <div className="aspect-[4/3] overflow-hidden bg-[#FFF5F8]">
-                    <img src={story.image} alt={story.imageAlt} className="h-full w-full object-contain" />
+                    <img src={story.image} alt={story.imageAlt} loading="lazy" className="h-full w-full object-contain" />
                   </div>
                   <div className="p-6">
                     <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#D4146A]">{story.category}</p>
@@ -702,7 +701,7 @@ export default function HomePage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section>}
 
       {/* CTA */}
       <section className="bg-white px-5 py-12 lg:px-8">
