@@ -17,6 +17,9 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# Preserve links to the previous URL that contained an ampersand.
+RewriteRule ^treatments/skin-conditions/Wart&MoleCare/?$ /treatments/skin-conditions/wart-mole-care/ [R=301,L,NE]
+
 # Use the same non-www host as the sitemap and canonical URLs.
 # REQUEST_URI preserves the path; the original query string is retained.
 RewriteCond %{HTTP_HOST} ^www\.oswaljainskinclinic\.com$ [NC]

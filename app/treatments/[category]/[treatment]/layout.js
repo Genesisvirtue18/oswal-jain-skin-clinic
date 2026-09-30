@@ -12,7 +12,7 @@ const keywords = {
   Eczema: ['eczma skin specialist', 'eczma treatment', 'skin specialist near me'],
   Psoriasis: ['psoriasis treatment', 'skin specialist near me', 'skin clinic'],
   Vitiligo: ['vitiligo treatment', 'skin specialist near me', 'dermatologist'],
-  'Wart&MoleCare': ['wart removal', 'mole removal', 'skin specialist near me'],
+  'wart-mole-care': ['wart removal', 'mole removal', 'skin specialist near me'],
 }
 
 const seoTitles = {
@@ -29,7 +29,7 @@ const seoTitles = {
   'hair-loss': 'Hair Loss Treatment in Rohini',
   'dark-lips': 'Dark Lips Treatment in Rohini',
   Dandruff: 'Dandruff Treatment in Rohini',
-  'Wart&MoleCare': 'Wart and Mole Care in Rohini',
+  'wart-mole-care': 'Wart and Mole Care in Rohini',
 }
 
 export async function generateMetadata({ params }) {

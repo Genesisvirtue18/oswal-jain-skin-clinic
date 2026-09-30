@@ -101,7 +101,7 @@ const skinConditions = [
   {
     title: 'Wart & Mole Care',
     icon: Activity,
-    href: '/treatments/skin-conditions/Wart&MoleCare',
+    href: '/treatments/skin-conditions/wart-mole-care',
     image: '/images/treatments/skin-conditions/Wart&MoleCare.jpg',
     summary: 'Safe evaluation and removal under medical supervision.',
     accent: 'from-[#F4F1FF] to-[#EAE4FF]',
